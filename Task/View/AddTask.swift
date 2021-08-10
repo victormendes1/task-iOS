@@ -10,17 +10,69 @@ import os.log
 
 class AddTask: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
-    
-    @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var titleTask: UITextField!
     @IBOutlet weak var notesTask: UITextView!
-   
+    
     var placeholderLabel: UILabel!
     var task: Task?
+    var homeVC = Home()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        screenComponentAdjustment()
         
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmpty
+    }
+    
+    // MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: Navigation
+    @IBAction func cancel(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+   
+    @IBAction func buttonDone(_ sender: Any) {
+        let title = titleTask.text ?? ""
+        let notes = notesTask.text ?? ""
+        
+        task = Task(title: title, notes: notes)
+        homeVC.tasks.append(task)
+        print(task)
+        dismiss(animated: true, completion: nil)
+    }
+    
+
+    
+    /*
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         super.prepare(for: segue, sender: sender)
+         
+         guard let button = sender as? UIButton, button === doneButton else {
+             os_log("O butão save não foi pressionado, cancelando...", log: OSLog.default, type: .debug)
+             // Sender == Remetente (Envia)
+             return
+             
+         }
+         
+         let title = titleTask.text ?? ""
+         let notes = notesTask.text ?? ""
+         
+         task = Task(title: title, notes: notes)
+     }*/
+}
+
+
+extension AddTask {
+    
+    func screenComponentAdjustment() {
         //Placeholder setup
         placeholderLabel = UILabel()
         placeholderLabel.text = "Notas"
@@ -34,7 +86,7 @@ class AddTask: UIViewController, UITextViewDelegate, UITextFieldDelegate {
         titleTask.backgroundColor = .secondarySystemBackground
         titleTask.layer.cornerRadius = 8
         titleTask.borderStyle = .none
-      
+        
         // Notes setup
         notesTask.delegate = self
         notesTask.addSubview(placeholderLabel)
@@ -50,44 +102,8 @@ class AddTask: UIViewController, UITextViewDelegate, UITextFieldDelegate {
         notesTask.layer.shadowOffset = CGSize(width: 0.75, height: 0.75)
         notesTask.layer.shadowRadius = 20
         notesTask.layer.masksToBounds = true
-        
-    }
-   
-    func textViewDidChange(_ textView: UITextView) {
-        placeholderLabel.isHidden = !textView.text.isEmpty
-    }
-    
-    // MARK: UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-  // MARK: Navigation
-    
-    @IBAction func cancel(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        guard let button = sender as? UIButton, button === doneButton else {
-            os_log("O butão save nao foi pressionado, cancelando...", log: OSLog.default, type: .debug)
-            // Sender == Remetente (Envia)
-            return
-            
-        }
-        
-        let title = titleTask.text ?? ""
-        let notes = notesTask.text ?? ""
-        
-        task = Task(title: title, notes: notes)
     }
 }
-
-   
-
 /*//Placeholder setup of title
  titleTask.text = "Titulo"
  titleTask.textColor = .systemGray3

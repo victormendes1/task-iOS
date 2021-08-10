@@ -11,7 +11,7 @@
         <!--Realizadas-->
         <scene sceneID="nWH-a3-p9z">
             <objects>
-                <viewController id="d66-c8-AwE" customClass="DoneTask" customModule="Tarefas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="d66-c8-AwE" customClass="DoneTask" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W7j-jw-Gdm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
         <!--Hoje-->
         <scene sceneID="MuL-TZ-IH0">
             <objects>
-                <viewController id="OLx-tx-xnA" customClass="Home" customModule="Tarefas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OLx-tx-xnA" customClass="Home" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dj3-jk-gjW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,6 +35,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Hoje" id="9g2-Yf-jKx">
+                        <barButtonItem key="leftBarButtonItem" title="Salvar" id="m1B-mZ-rip">
+                            <connections>
+                                <action selector="saveDataWithButton:" destination="OLx-tx-xnA" id="tSe-jH-sdc"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Adicionar" id="dr9-oS-fny">
                             <connections>
                                 <segue destination="OxH-QJ-6vG" kind="presentation" id="ELO-1o-fcC"/>
@@ -49,7 +54,7 @@
         <!--Nova Tarefa-->
         <scene sceneID="BKG-Rb-pKI">
             <objects>
-                <viewController id="OxH-QJ-6vG" customClass="AddTask" customModule="Tarefas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OxH-QJ-6vG" customClass="AddTask" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DEP-LZ-11s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,6 +76,9 @@
                                 <rect key="frame" x="264" y="20" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Pronto"/>
+                                <connections>
+                                    <action selector="buttonDone:" destination="OxH-QJ-6vG" eventType="touchUpInside" id="a8M-kO-egp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cum-8D-t94">
                                 <rect key="frame" x="16" y="20" width="61" height="30"/>
@@ -96,7 +104,6 @@
                         <barButtonItem key="rightBarButtonItem" title="Pronto" style="done" id="qvu-oH-LfK"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="doneButton" destination="4qw-AG-WkH" id="Z4x-df-Ua5"/>
                         <outlet property="notesTask" destination="DS1-g5-JAy" id="qjK-eX-bkE"/>
                         <outlet property="titleTask" destination="Vtb-Lw-eCQ" id="MLt-Aj-aZh"/>
                     </connections>
@@ -105,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="1358" y="108"/>
         </scene>
-        <!--View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="eop-rD-4Lj">
             <objects>
-                <tabBarController id="Rza-5X-sRE" customClass="ViewController" customModule="Tarefas" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="Rza-5X-sRE" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="35A-Nd-u3n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

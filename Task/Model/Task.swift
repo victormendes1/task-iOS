@@ -13,19 +13,12 @@ class Task: NSObject, NSCoding {
     // MARK: Properties
     var title: String
     var notes: String?
-  
-    // MARK: Saving data
-    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("tasks")
     
-    // MARK: Saving data with Codable
-/*    func storeTask() {
-        do {
-            let data = try PropertyListEncoder().encode(tasks)
-            let success = NSKeyedArchiver.archivedData(withRootObject: Task, requiringSecureCoding: true)
-        }
-    } */
-    // MARK: Types
+    // MARK: Saving data
+    static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let archiveURL = documentsDirectory.appendingPathComponent("tasks")
+
+    // MARK:  Types
     struct PropertyKey {
         static let title = "title"
         static let notes = "notesDescription"
@@ -33,7 +26,6 @@ class Task: NSObject, NSCoding {
     
     // MARK: Initialization
     init?(title: String, notes: String) {
-        
         self.title = title
         self.notes = notes
     }
@@ -46,22 +38,16 @@ class Task: NSObject, NSCoding {
     
     required convenience init?(coder: NSCoder) {
         guard let title = coder.decodeObject(forKey: PropertyKey.title) as? String else {
-            os_log("Não foi possivel decodificar o nome do objeto refeição.",log: OSLog.default, type: .debug)
+            os_log("Não foi possivel decodificar o nome do objeto refeição.", log: OSLog.default, type: .debug)
             
             return nil
         }
         
         guard let notes = coder.decodeObject(forKey: PropertyKey.notes) as? String else {
-            os_log("Não foi possivel decodificar o nome do objeto refeição.",log: OSLog.default, type: .debug)
+            os_log("Não foi possivel decodificar o nome do objeto refeição.", log: OSLog.default, type: .debug)
             
             return nil
         }
         self.init(title: title, notes: notes)
     }
 }
-//class SaveTask {
- //   static func saveTask(task: Task) {
-  //      let data = NSKeyedArchiver.archivedData(withRootObject: task)
-   //     UserDefaults.standard.set(forKey: "tasks")
-  //  }
-//}
