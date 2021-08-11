@@ -22,12 +22,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrd-dI-7Lm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="591" y="763"/>
+            <point key="canvasLocation" x="-189" y="807"/>
         </scene>
         <!--Hoje-->
         <scene sceneID="MuL-TZ-IH0">
             <objects>
-                <viewController id="OLx-tx-xnA" customClass="Home" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OLx-tx-xnA" customClass="Home" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dj3-jk-gjW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,14 +35,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Hoje" id="9g2-Yf-jKx">
-                        <barButtonItem key="leftBarButtonItem" title="Salvar" id="m1B-mZ-rip">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="dr9-oS-fny">
                             <connections>
-                                <action selector="saveDataWithButton:" destination="OLx-tx-xnA" id="tSe-jH-sdc"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Adicionar" id="dr9-oS-fny">
-                            <connections>
-                                <segue destination="OxH-QJ-6vG" kind="presentation" id="ELO-1o-fcC"/>
+                                <segue destination="OxH-QJ-6vG" kind="presentation" identifier="AddNewTask" id="7Eh-g5-Rzf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -54,7 +49,7 @@
         <!--Nova Tarefa-->
         <scene sceneID="BKG-Rb-pKI">
             <objects>
-                <viewController id="OxH-QJ-6vG" customClass="AddTask" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTask" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OxH-QJ-6vG" customClass="AddTask" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DEP-LZ-11s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,6 +100,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="notesTask" destination="DS1-g5-JAy" id="qjK-eX-bkE"/>
+                        <outlet property="saveButton" destination="4qw-AG-WkH" id="9AV-3G-y6t"/>
                         <outlet property="titleTask" destination="Vtb-Lw-eCQ" id="MLt-Aj-aZh"/>
                     </connections>
                 </viewController>
@@ -154,6 +150,7 @@
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="cross.circle" catalog="system" width="128" height="121"/>
         <image name="cross.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

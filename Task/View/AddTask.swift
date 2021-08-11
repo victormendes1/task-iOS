@@ -8,19 +8,24 @@
 import UIKit
 import os.log
 
+protocol TaskDataDelegate {
+    func addTask(newTask: Task)
+}
+
 class AddTask: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var titleTask: UITextField!
     @IBOutlet weak var notesTask: UITextView!
-    
+    @IBOutlet weak var saveButton: UIButton!
     var placeholderLabel: UILabel!
-    var task: Task?
-    var homeVC = Home()
+    var savedTask: Task?
+    var delegate: TaskDataDelegate? = nil
     
+    // MARK:- ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         screenComponentAdjustment()
-        
+        updateSaveButtonState()
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -33,7 +38,19 @@ class AddTask: UIViewController, UITextViewDelegate, UITextFieldDelegate {
         return true
     }
     
-    // MARK: Navigation
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Desabilitando o botão Save enquanto digitar
+        saveButton.isEnabled = false
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //Ao fim da digitação essa função atribui o resultado para propriedade text da classe UILabel, mealName herda essa propriedade
+        updateSaveButtonState()
+        title = textField.text
+    }
+    
+    // MARK: Actions
     @IBAction func cancel(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -43,33 +60,21 @@ class AddTask: UIViewController, UITextViewDelegate, UITextFieldDelegate {
         let title = titleTask.text ?? ""
         let notes = notesTask.text ?? ""
         
-        task = Task(title: title, notes: notes)
-        homeVC.tasks.append(task)
-        print(task)
-        dismiss(animated: true, completion: nil)
+        savedTask = Task(title: title, notes: notes)
+        if self.delegate != nil {
+        print(savedTask!)
+            self.delegate?.addTask(newTask: savedTask!)
+            dismiss(animated: true, completion: nil)
+        }
     }
-    
-
-    
-    /*
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         super.prepare(for: segue, sender: sender)
-         
-         guard let button = sender as? UIButton, button === doneButton else {
-             os_log("O butão save não foi pressionado, cancelando...", log: OSLog.default, type: .debug)
-             // Sender == Remetente (Envia)
-             return
-             
-         }
-         
-         let title = titleTask.text ?? ""
-         let notes = notesTask.text ?? ""
-         
-         task = Task(title: title, notes: notes)
-     }*/
+    private func updateSaveButtonState() {
+        let text = titleTask.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+        
+    }
 }
 
-
+// MARK: - Design
 extension AddTask {
     
     func screenComponentAdjustment() {
@@ -83,6 +88,7 @@ extension AddTask {
         placeholderLabel.sizeToFit()
         
         // Style Title
+        titleTask.delegate = self
         titleTask.backgroundColor = .secondarySystemBackground
         titleTask.layer.cornerRadius = 8
         titleTask.borderStyle = .none
@@ -104,47 +110,3 @@ extension AddTask {
         notesTask.layer.masksToBounds = true
     }
 }
-/*//Placeholder setup of title
- titleTask.text = "Titulo"
- titleTask.textColor = .systemGray3
- titleTask.becomeFirstResponder()
- titleTask.selectedTextRange = titleTask.textRange(from: titleTask.beginningOfDocument, to: titleTask.beginningOfDocument)
- 
- /*
- // Shadow of title
- titleTask.layer.shadowColor = UIColor.gray.cgColor
- titleTask.layer.shadowOffset = CGSize(width: 0.75, height: 0.75)
- titleTask.layer.shadowRadius = 20
- titleTask.layer.masksToBounds = true
- */
- 
- func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
- let currentText: String = textView.text
- let updateText = (currentText as NSString).replacingCharacters(in: range, with: text)
- 
- if updateText.isEmpty {
- textView.text = "Titulo"
- textView.textColor = .systemGray3
- 
- textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
- }
- else if textView.textColor == UIColor.systemGray3 && !text.isEmpty {
- textView.textColor = UIColor.black
- textView.text = text
- }
- else {
- return true
- }
- 
- return false
- }
- 
- func textViewDidChangeSelection(_ textView: UITextView) {
- if self.view.window != nil {
- if textView.textColor == UIColor.lightGray {
- textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
- }
- }
- }
- 
- */
