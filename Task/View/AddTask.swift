@@ -45,7 +45,6 @@ class AddTask: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //Ao fim da digitação essa função atribui o resultado para propriedade text da classe UILabel, mealName herda essa propriedade
         updateSaveButtonState()
         title = textField.text
     }
@@ -59,14 +58,15 @@ class AddTask: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     @IBAction func buttonDone(_ sender: Any) {
         let title = titleTask.text ?? ""
         let notes = notesTask.text ?? ""
+        let date = Date().addingTimeInterval(800.0)
         
-        savedTask = Task(title: title, notes: notes)
+        savedTask = Task(title: title, date: date, notes: notes, isComplete: false)
         if self.delegate != nil {
-        print(savedTask!)
             self.delegate?.addTask(newTask: savedTask!)
             dismiss(animated: true, completion: nil)
         }
     }
+    
     private func updateSaveButtonState() {
         let text = titleTask.text ?? ""
         saveButton.isEnabled = !text.isEmpty
