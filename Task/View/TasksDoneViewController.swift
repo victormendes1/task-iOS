@@ -19,24 +19,23 @@ class TasksDoneViewController: UIViewController {
     }
     
     func setupView() {
-        
         tableView.rowHeight = 80
-        tableView.dataSource = self
+       // tableView.dataSource = self
         tableView.register(UINib(nibName: "TaskCompletedCell", bundle: nil), forCellReuseIdentifier: "cellTaskDone")
     }
     
 }
 
-extension TasksDoneViewController: UITableViewDelegate, UITableViewDataSource {
+extension TasksDoneViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellTaskDone", for: indexPath) as! TaskCompletedCell
-        cell.titleTextFiel.text = tasks[indexPath.row].title
-        return cell
-    }
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cellTaskDone", for: indexPath)
+//        cell.titleTextFiel.text = tasks[indexPath.row].title
+//        return cell
+//    }
 }
 // MARK: - Protocol
 extension TasksDoneViewController: TaskDataDelegate {

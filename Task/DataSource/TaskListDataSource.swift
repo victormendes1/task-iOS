@@ -13,10 +13,11 @@ class TaskListDataSource: NSObject {
     typealias ChangedAction = () -> Void
     
     private var tasks: [Task] = [
-        Task(title: "Evento Apple", date: Date().addingTimeInterval(800.0), notes: "Evento na terça-feita", isComplete: false)!
+        Task(title: "Evento Apple", date: Date().addingTimeInterval(800.0), notes: "Evento na terça-feita", isComplete: false)!,
+        Task(title: "Comprar chocolate", date: Date().addingTimeInterval(800.0), notes: "mais tarde", isComplete: false)!
     ] {
         didSet {
-            print("Nova tarefa\(tasks.count)")
+            print("Nova tarefa")
         }
     }
     
@@ -42,12 +43,20 @@ class TaskListDataSource: NSObject {
     
     func update(_ task: Task, at row: Int) {
         tasks[row] = task
-       // saveTasks()
+        // saveTasks()
     }
     
-    func delete(at row: Int, completion: (Bool) -> Void) {
+     func delete(at row: Int, _ completion: ((Bool) -> Void)?) {
         tasks.remove(at: row)
     }
+    
+    func delete(at index: Int, enable: Bool, tableView: UITableView) {
+        if enable {
+            tasks.remove(at: index)
+            print(index)
+            tableView.reloadData()
+        }
+   }
     
     func index(at: Int) {
         
@@ -81,11 +90,11 @@ extension TaskListDataSource: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TaskListTableViewCell = tableView.dequeueReusableCell(indexPath)
-        let currentTask = task(at: indexPath.row)
-        // let date = currentTask.date
-        cell.configure(title: currentTask.title, isDone: currentTask.isComplete) {
-            let taskSelected = currentTask
-            taskSelected.isComplete.toggle()
+        let item = task(at: indexPath.row)
+        cell.configure(title: item.title) {
+            item.isComplete.toggle()
+            self.delete(at: indexPath.row, enable: item.isComplete, tableView: tableView)
+            return item.isComplete
         }
         return cell
     }
