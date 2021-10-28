@@ -13,8 +13,6 @@ class TaskListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "reuseIdentifier", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "reuseIdentifier")
         dataSource = TaskListDataSource(taskCompletedAction: { taskIndex in
             DispatchQueue.main.async {
                 self.tableView.reloadRows(at: [IndexPath(row: taskIndex, section: 0)], with: .automatic)

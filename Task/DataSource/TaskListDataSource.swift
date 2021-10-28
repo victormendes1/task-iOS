@@ -80,9 +80,7 @@ extension TaskListDataSource: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? TaskListTableViewCell else {
-            fatalError("Unable to dequeue TaskListCell") }
-        
+        let cell: TaskListTableViewCell = tableView.dequeueReusableCell(indexPath)
         let currentTask = task(at: indexPath.row)
         // let date = currentTask.date
         cell.configure(title: currentTask.title, isDone: currentTask.isComplete) {
