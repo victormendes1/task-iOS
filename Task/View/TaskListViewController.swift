@@ -13,7 +13,9 @@ class TaskListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(type: TaskListTableViewCell.self)
+        
+        tableView.register(type: TaskListTableViewCell.self)
+        
         dataSource = TaskListDataSource(taskCompletedAction: { taskIndex in
             DispatchQueue.main.async {
                 self.tableView.reloadRows(at: [IndexPath(row: taskIndex, section: 0)], with: .automatic)
@@ -22,7 +24,7 @@ class TaskListViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        })
+        }, takeTask: nil )
         tableView.dataSource = dataSource
     }
     
@@ -41,6 +43,10 @@ class TaskListViewController: UITableViewController {
         }
     }
     
+    @IBAction func update(_ sender: Any) {
+        print("Atualizando...")
+        self.tableView.reloadData()
+    }
     @IBAction func unwindToDetail(for: UIStoryboardSegue) {
         
     }

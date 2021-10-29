@@ -42,7 +42,6 @@ class TaskListTableViewCell: UITableViewCell {
     }
     
     private func isDone(_ done: Bool) {
-        print("Pressionado")
         let image = done ? UIImage(systemName: "circle.fill") : UIImage(systemName: "circle")
         doneButton.setBackgroundImage(image, for: .normal)
     }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		5795178126AF2F6B0019280E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5795177C26AF2F6B0019280E /* Task.swift */; };
 		5795178526AF2FE70019280E /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5795178426AF2FE70019280E /* AddTask.swift */; };
 		57AA33D226C454CC00D839F2 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AA33D126C454CB00D839F2 /* TaskDetailViewController.swift */; };
+		57D6288D272C7341000B6D0D /* TaskDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D6288C272C7341000B6D0D /* TaskDetailTableViewCell.swift */; };
 		80F255B81F98D7A7535A1D74 /* Pods_Task.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D79515D4AB5DC31C4EFCCD39 /* Pods_Task.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		5795177C26AF2F6B0019280E /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		5795178426AF2FE70019280E /* AddTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 		57AA33D126C454CB00D839F2 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		57D6288C272C7341000B6D0D /* TaskDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailTableViewCell.swift; sourceTree = "<group>"; };
 		6D8CDE47A3C21DA2A1BD2A60 /* Pods-Task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task.debug.xcconfig"; path = "Target Support Files/Pods-Task/Pods-Task.debug.xcconfig"; sourceTree = "<group>"; };
 		D79515D4AB5DC31C4EFCCD39 /* Pods_Task.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Task.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF0595063BC9B435AA11F37 /* Pods-Task.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task.release.xcconfig"; path = "Target Support Files/Pods-Task/Pods-Task.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,7 +72,6 @@
 				6D8CDE47A3C21DA2A1BD2A60 /* Pods-Task.debug.xcconfig */,
 				DCF0595063BC9B435AA11F37 /* Pods-Task.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -90,6 +91,7 @@
 				57AA33D126C454CB00D839F2 /* TaskDetailViewController.swift */,
 				5795176C26AF2D420019280E /* Main.storyboard */,
 				5776C5F4271F947D00837301 /* Cell */,
+				57E2753D272C6652000F2167 /* Cell Detail */,
 				5795178426AF2FE70019280E /* AddTask.swift */,
 				5795177A26AF2F6B0019280E /* TasksDoneViewController.swift */,
 			);
@@ -155,6 +157,14 @@
 				5795177426AF2D4A0019280E /* Info.plist */,
 			);
 			path = Task;
+			sourceTree = "<group>";
+		};
+		57E2753D272C6652000F2167 /* Cell Detail */ = {
+			isa = PBXGroup;
+			children = (
+				57D6288C272C7341000B6D0D /* TaskDetailTableViewCell.swift */,
+			);
+			path = "Cell Detail";
 			sourceTree = "<group>";
 		};
 		DCABD8B9B62E7F4F1D07DC59 /* Frameworks */ = {
@@ -291,6 +301,7 @@
 				5795177F26AF2F6B0019280E /* TasksDoneViewController.swift in Sources */,
 				5795178126AF2F6B0019280E /* Task.swift in Sources */,
 				5795176926AF2D420019280E /* SceneDelegate.swift in Sources */,
+				57D6288D272C7341000B6D0D /* TaskDetailTableViewCell.swift in Sources */,
 				5785FFBC26EBDB890035175F /* TaskListDataSource.swift in Sources */,
 				578309E1272B68BB0037EB4A /* TaskAccessObject.swift in Sources */,
 			);
@@ -441,7 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BQD43L5A49;
+				DEVELOPMENT_TEAM = 69RAP3CCFB;
 				INFOPLIST_FILE = Task/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

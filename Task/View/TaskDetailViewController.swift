@@ -34,13 +34,24 @@ class TaskDetailViewController: UITableViewController {
         titleField.text = task?.title
         notesView.text = task?.notes
     }
-     
+    
+    func addNewTask(task: Task) {
+        task.title = titleField.text!
+        task.date = datePicker.date
+        task.notes = notesView.text
+    }
+    
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        if let task = task {
+            addNewTask(task: task)
+        }
+        
+        dataSource = TaskListDataSource(taskCompletedAction: {_ in }, taskChangeAction: {}, takeTask: { self.task! })
+        
         let isPresentingInAddMode = presentingViewController is UINavigationController
         if isPresentingInAddMode {
             dismiss(animated: true, completion: nil)
         } else {
-            
             navigationController?.popViewController(animated: true)
         }
     }
