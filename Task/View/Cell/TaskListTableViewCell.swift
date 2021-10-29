@@ -6,33 +6,44 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class TaskListTableViewCell: UITableViewCell {
-    typealias CompleteAction = () -> Bool
-   
+    typealias Action = () -> Void
+    
     @IBOutlet var backgroundCellView: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
     
-    private var doneButtonAction: CompleteAction?
-   
+    private var buttonAction: Action?
+    private var bag = DisposeBag()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundCellView.layer.cornerRadius = 8
+        configureBindings()
     }
     
-    func configure(title: String, doneButtonAction: @escaping CompleteAction) {
-        self.titleLabel.text = title
-       // self.dateLabel.text = date
-        self.doneButtonAction = doneButtonAction
+    func configure(_ task: Task, handler: @escaping Action) {
+        titleLabel.text = task.title
+        isDone(task.isComplete)
+        buttonAction = handler
     }
     
-    @IBAction func doneButtonTapped(_ sender: UIButton) {
-        if let doneButton = doneButtonAction {
-           let isDone = doneButton()
-            let image = isDone ? UIImage(systemName: "circle.fill") : UIImage(systemName: "circle")
-            self.doneButton.setBackgroundImage(image, for: .normal)
-        }
+    private func configureBindings() {
+        doneButton.rx
+            .tap
+            .subscribe( onNext: { _ in
+                if let completion = self.buttonAction { completion() }
+            })
+            .disposed(by: bag)
+    }
+    
+    private func isDone(_ done: Bool) {
+        print("Pressionado")
+        let image = done ? UIImage(systemName: "circle.fill") : UIImage(systemName: "circle")
+        doneButton.setBackgroundImage(image, for: .normal)
     }
 }

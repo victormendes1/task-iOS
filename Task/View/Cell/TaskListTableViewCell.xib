@@ -44,9 +44,6 @@
                                     <constraint firstAttribute="width" constant="40" id="y1y-4O-bbN"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="circle" catalog="system"/>
-                                <connections>
-                                    <action selector="doneButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CR0-tp-4HC"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
