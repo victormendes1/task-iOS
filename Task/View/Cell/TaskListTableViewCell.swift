@@ -23,16 +23,18 @@ class TaskListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundCellView.layer.cornerRadius = 8
-        configureBindings()
+        configureBindings(true)
     }
     
     func configure(_ task: Task, handler: @escaping Action) {
         titleLabel.text = task.title
+        let date = task.date.description
+        dateLabel.text = convertDate(date)
         isDone(task.isComplete)
         buttonAction = handler
     }
     
-    private func configureBindings() {
+    private func configureBindings(_ done: Bool) {
         doneButton.rx
             .tap
             .subscribe( onNext: { _ in
@@ -45,4 +47,8 @@ class TaskListTableViewCell: UITableViewCell {
         let image = done ? UIImage(systemName: "circle.fill") : UIImage(systemName: "circle")
         doneButton.setBackgroundImage(image, for: .normal)
     }
+    
+   
 }
+
+
