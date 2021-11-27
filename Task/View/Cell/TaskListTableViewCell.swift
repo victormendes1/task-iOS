@@ -28,8 +28,7 @@ class TaskListTableViewCell: UITableViewCell {
     
     func configure(_ task: Task, handler: @escaping Action) {
         titleLabel.text = task.title
-        let date = task.date.description
-        dateLabel.text = convertDate(date)
+        dateLabel.text = TaskDueDate().convertDate(task.date.description)
         isDone(task.isComplete)
         buttonAction = handler
     }
@@ -48,7 +47,7 @@ class TaskListTableViewCell: UITableViewCell {
         doneButton.setBackgroundImage(image, for: .normal)
     }
     
-   
+    
 }
 
 

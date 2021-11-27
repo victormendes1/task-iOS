@@ -11,7 +11,6 @@
 		575382EB26EE523D00FA03E5 /* TaskDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575382EA26EE523D00FA03E5 /* TaskDetailViewDataSource.swift */; };
 		577388AA273074D800677677 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577388A9273074D800677677 /* ReviewTableViewController.swift */; };
 		577388AC2733508100677677 /* TaskDueDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577388AB2733508000677677 /* TaskDueDate.swift */; };
-		577388AE2733519A00677677 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577388AD2733519A00677677 /* String.swift */; };
 		5776C5F7271F94A300837301 /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C5F5271F94A300837301 /* TaskListTableViewCell.swift */; };
 		5776C5F8271F94A300837301 /* TaskListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5776C5F6271F94A300837301 /* TaskListTableViewCell.xib */; };
 		578309E1272B68BB0037EB4A /* TaskAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578309E0272B68BB0037EB4A /* TaskAccessObject.swift */; };
@@ -35,7 +34,6 @@
 		575382EA26EE523D00FA03E5 /* TaskDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewDataSource.swift; sourceTree = "<group>"; };
 		577388A9273074D800677677 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		577388AB2733508000677677 /* TaskDueDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDueDate.swift; sourceTree = "<group>"; };
-		577388AD2733519A00677677 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		5776C5F5271F94A300837301 /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
 		5776C5F6271F94A300837301 /* TaskListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListTableViewCell.xib; sourceTree = "<group>"; };
 		578309E0272B68BB0037EB4A /* TaskAccessObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAccessObject.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				5706590E272ABEC600850249 /* UITableView.swift */,
-				577388AD2733519A00677677 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -310,7 +307,6 @@
 				57D6288D272C7341000B6D0D /* TaskDetailTableViewCell.swift in Sources */,
 				577388AA273074D800677677 /* ReviewTableViewController.swift in Sources */,
 				5785FFBC26EBDB890035175F /* TaskListDataSource.swift in Sources */,
-				577388AE2733519A00677677 /* String.swift in Sources */,
 				578309E1272B68BB0037EB4A /* TaskAccessObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

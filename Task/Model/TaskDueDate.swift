@@ -7,23 +7,18 @@
 
 import Foundation
 
-enum DueDate {
-    case today, week, month
-    
-    func compareDate(date: Date)  {
-        let isToday = Locale.current.calendar.isDateInToday(date)
-        let isWeek = Locale.current.calendar.isDateInWeekend(date)
-        switch self {
-        case .today:
-             isToday
-            
-        case .week:
-             date > Date() && !isToday && isWeek
-        case .month:
-             break
+struct TaskDueDate {
+    func convertDate(_ date: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+        guard let dateRevert = formatter.date(from: date) else { return "" }
+        let isToday = Locale.current.calendar.isDateInToday(dateRevert)
+        if isToday {
+            formatter.dateFormat = "'Hoje às' HH:mm"
+        } else {
+            formatter.dateFormat = "dd/MM/yyyy 'às' HH:mm"
         }
-    }
+        let dateConverted = formatter.string(from: dateRevert)
+        return dateConverted.description
+    }    
 }
-
-
-
