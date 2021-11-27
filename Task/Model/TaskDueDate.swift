@@ -14,9 +14,9 @@ struct TaskDueDate {
         guard let dateRevert = formatter.date(from: date) else { return "" }
         let isToday = Locale.current.calendar.isDateInToday(dateRevert)
         if isToday {
-            formatter.dateFormat = "'Hoje às' HH:mm"
+            formatter.dateFormat = "'Today at' HH:mm"
         } else {
-            formatter.dateFormat = "dd/MM/yyyy 'às' HH:mm"
+            formatter.dateFormat = "dd/MM/yyyy 'at' HH:mm"
         }
         let dateConverted = formatter.string(from: dateRevert)
         return dateConverted.description

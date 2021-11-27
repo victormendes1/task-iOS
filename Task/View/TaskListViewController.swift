@@ -38,13 +38,7 @@ class TaskListViewController: UITableViewController {
             destination?.listTaskComplete = itemsComplete
         }
     }
-    
-    // MARK: - Actions
-    @IBAction func update(_ sender: Any) {
-        self.tableView.reloadData()
-        print("Atualizando...")
-    }
-    
+
     // MARK: - Private Func
     private func configureCell() {
         tableView.register(type: TaskListTableViewCell.self)
@@ -60,23 +54,6 @@ class TaskListViewController: UITableViewController {
     func add(_ item: Task) {
         items.append(item)
         tableView.reloadData()
-    }
-    // MARK: - Private Func
-    private func convertDate(_ date: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        formatter.timeZone = TimeZone.current
-        formatter.locale = Locale.current
-        let dateRevert = formatter.date(from: date)!
-        let date = reverseDate(dateRevert.description)
-        return date.description
-    }
-    
-    private func reverseDate(_ date: String) -> Date {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        let date = formatter.date(from: date)!
-        return date
     }
     
     //MARK: - TableView

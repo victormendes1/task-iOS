@@ -16,9 +16,7 @@ class TaskListDataSource: NSObject {
         Task(title: "Almoço", date: Date().addingTimeInterval(800.0), notes: "mais tarde", isComplete: false)!,
         Task(title: "Hallowen na Yollanda", date: Date().addingTimeInterval(800.0), notes: "mais tarde", isComplete: false)!,
         Task(title: "Abastecer carro", date: Date().addingTimeInterval(800.0), notes: "mais tarde", isComplete: false)!
-    ]{ didSet {
-        print(items.last?.title)
-    } }
+    ]
     
     init(update: (() -> Void)? ) {
         if let completion = update {

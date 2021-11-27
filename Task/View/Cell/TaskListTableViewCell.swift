@@ -46,8 +46,4 @@ class TaskListTableViewCell: UITableViewCell {
         let image = done ? UIImage(systemName: "circle.fill") : UIImage(systemName: "circle")
         doneButton.setBackgroundImage(image, for: .normal)
     }
-    
-    
 }
-
-

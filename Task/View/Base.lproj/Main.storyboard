@@ -21,18 +21,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Today" largeTitleDisplayMode="always" id="05y-ts-wzV">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Update" id="BZ4-Jx-cal">
-                                <connections>
-                                    <action selector="update:" destination="Hcc-es-hdj" id="grH-QD-U3k"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Review" id="TUV-QG-Qrd">
-                                <connections>
-                                    <segue destination="42T-3o-tFY" kind="show" identifier="ShowReviewSegue" id="ZJ9-jg-7cb"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" title="Review" id="TUV-QG-Qrd">
+                            <connections>
+                                <segue destination="42T-3o-tFY" kind="show" identifier="ShowReviewSegue" id="ZJ9-jg-7cb"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ODJ-rk-gmh">
                             <connections>
                                 <segue destination="tk0-dN-rV5" kind="presentation" identifier="ShowNewTaskSegue" id="eTa-7W-61L"/>
@@ -71,7 +64,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqd-Kq-5My" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2761" y="-256"/>
+            <point key="canvasLocation" x="1892" y="-1302"/>
         </scene>
         <!--Task Detail View Controller-->
         <scene sceneID="iXq-bp-fQn">
@@ -151,7 +144,6 @@
                                                     <rect key="frame" x="16" y="11" width="343" height="178"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -188,7 +180,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sik-4Y-NOh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3613.5999999999999" y="-607.38916256157643"/>
+            <point key="canvasLocation" x="3610" y="-607"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oCG-gX-N1k">
@@ -224,7 +216,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cru-tQ-1ov" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2762" y="-912"/>
+            <point key="canvasLocation" x="2719" y="-607"/>
         </scene>
     </scenes>
     <resources>

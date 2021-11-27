@@ -53,21 +53,4 @@ class TaskDetailViewController: UITableViewController {
             navigationController?.popViewController(animated: true)
         }
     }
-    
-    private func convertDate(_ date: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        formatter.timeZone = TimeZone.current
-        formatter.locale = Locale.current
-        let dateRevert = formatter.date(from: date)!
-        let date = reverseDate(dateRevert.description)
-        return date.description
-    }
-    
-    private func reverseDate(_ date: String) -> Date {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        let date = formatter.date(from: date)!
-        return date
-    }
 }
