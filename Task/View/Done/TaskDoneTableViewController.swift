@@ -13,15 +13,16 @@ class TaskDoneTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(type: TaskDoneViewCell.self)
+        if listTaskComplete.isEmpty {
+            
+        }
     }
-
+    
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return listTaskComplete.count
+        listTaskComplete.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TaskDoneViewCell = tableView.dequeueReusableCell(indexPath)
         let date = TaskDueDate().convertDate(listTaskComplete[indexPath.row].completedWhen.description)
@@ -29,5 +30,5 @@ class TaskDoneTableViewController: UITableViewController {
         cell.dateLabel.text = date
         return cell
     }
-
+    
 }

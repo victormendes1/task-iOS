@@ -8,7 +8,7 @@
 import UIKit
 
 class TaskListDataSource: NSObject {
-   
+    
     var itemsCompleted: [Task] = []
     var items = [
         Task(title: "Evento Apple", date: Date().addingTimeInterval(800.0), notes: "Evento na terça-feita", isComplete: false, completedWhen: Date())!,
@@ -36,18 +36,18 @@ class TaskListDataSource: NSObject {
     }
     
     func task(at: Int) -> Task {
-       items[at]
+        items[at]
     }
     
     func tasks() -> [Task] {
         items
     }
-  
+    
 }
 
 extension TaskListDataSource: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
