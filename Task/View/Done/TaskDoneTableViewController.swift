@@ -1,5 +1,5 @@
 //
-//  ReviewTableViewController.swift
+//  TaskDoneTableViewController.swift
 //  Task
 //
 //  Created by Victor Mendes on 01/11/21.
@@ -7,11 +7,12 @@
 
 import UIKit
 
-class ReviewTableViewController: UITableViewController {
+class TaskDoneTableViewController: UITableViewController {
     var listTaskComplete: [Task] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(type: TaskDoneViewCell.self)
     }
 
     // MARK: - Table view data source
@@ -22,10 +23,9 @@ class ReviewTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        cell.textLabel?.text = listTaskComplete[indexPath.row].title
-
+        let cell: TaskDoneViewCell = tableView.dequeueReusableCell(indexPath)
+        cell.titleLabel.text = listTaskComplete[indexPath.row].title
+        cell.dateLabel.text = listTaskComplete[indexPath.row].date.description
         return cell
     }
 

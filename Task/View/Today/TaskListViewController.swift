@@ -34,7 +34,7 @@ class TaskListViewController: UITableViewController {
             present(navigationController, animated: true, completion: nil)
             
         } else if segue.identifier == "ShowReviewSegue" {
-            let destination = segue.destination as? ReviewTableViewController
+            let destination = segue.destination as? TaskDoneTableViewController
             destination?.listTaskComplete = itemsComplete
         }
     }
