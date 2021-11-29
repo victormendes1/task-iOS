@@ -15,6 +15,7 @@ class Task: NSObject, NSCoding {
     var date: Date
     var notes: String?
     var isComplete: Bool = false
+    var completedWhen: Date
     
     // MARK: Saving data
     static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -26,14 +27,16 @@ class Task: NSObject, NSCoding {
         static let date = "dueDate"
         static let notes = "notesDescription"
         static let isComplete = "complete"
+        static let completedWhen = "completedWhen"
     }
     
     // MARK: Initialization
-    init?(title: String, date: Date, notes: String, isComplete: Bool) {
+    init?(title: String, date: Date, notes: String, isComplete: Bool, completedWhen: Date) {
         self.title = title
         self.date = date
         self.notes = notes
         self.isComplete = isComplete
+        self.completedWhen = completedWhen
     }
     
     // MARK: NSConding
@@ -42,6 +45,7 @@ class Task: NSObject, NSCoding {
         coder.encode(date, forKey: PropertyKey.date)
         coder.encode(notes, forKey: PropertyKey.notes)
         coder.encode(isComplete, forKey: PropertyKey.isComplete)
+        coder.encode(completedWhen, forKey: PropertyKey.completedWhen)
     }
     
     required convenience init?(coder: NSCoder) {
@@ -58,8 +62,13 @@ class Task: NSObject, NSCoding {
             return nil
         }
         
+        guard let completedWhen = coder.decodeObject(forKey: PropertyKey.completedWhen) as? Date else {
+            os_log("Unable to decode date", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
               let isComplete = coder.decodeBool(forKey: PropertyKey.isComplete)
         
-        self.init(title: title, date: date, notes: notes, isComplete: isComplete)
+        self.init(title: title, date: date, notes: notes, isComplete: isComplete, completedWhen: completedWhen)
     }
 }
