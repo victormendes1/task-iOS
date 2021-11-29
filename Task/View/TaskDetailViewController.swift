@@ -22,7 +22,7 @@ class TaskDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.task = Task(title: "", date: Date(), notes: "", isComplete: false)
+        self.task = Task(title: "", date: Date(), notes: "", isComplete: false, completedWhen: Date())
     }
     
     

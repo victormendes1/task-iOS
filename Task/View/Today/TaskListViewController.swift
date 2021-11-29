@@ -67,6 +67,7 @@ class TaskListViewController: UITableViewController {
         
         cell.configure(item) {
             item.isComplete.toggle()
+            item.completedWhen = Date()
             tableView.reloadData()
             
             if let index = self.index(item) {

@@ -24,8 +24,9 @@ class TaskDoneTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TaskDoneViewCell = tableView.dequeueReusableCell(indexPath)
+        let date = TaskDueDate().convertDate(listTaskComplete[indexPath.row].completedWhen.description)
         cell.titleLabel.text = listTaskComplete[indexPath.row].title
-        cell.dateLabel.text = listTaskComplete[indexPath.row].date.description
+        cell.dateLabel.text = date
         return cell
     }
 
