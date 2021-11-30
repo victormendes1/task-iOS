@@ -11,7 +11,7 @@
         <scene sceneID="r6b-AA-YMm">
             <objects>
                 <tableViewController id="Hcc-es-hdj" customClass="TaskListViewController" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="F4d-Os-nG5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" id="F4d-Os-nG5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,20 +37,34 @@
             </objects>
             <point key="canvasLocation" x="1892" y="-607.38916256157643"/>
         </scene>
-        <!--Task Done-->
+        <!--Task Done Table View Controller-->
         <scene sceneID="6zO-YN-uuO">
             <objects>
                 <tableViewController storyboardIdentifier="ReviewTableViewController" id="42T-3o-tFY" customClass="TaskDoneTableViewController" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cpB-xk-Sdm">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="69" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cpB-xk-Sdm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <segmentedControl key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="wgY-Wx-aox">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Earliest"/>
+                                <segment title="Latest"/>
+                            </segments>
+                        </segmentedControl>
                         <connections>
                             <outlet property="dataSource" destination="42T-3o-tFY" id="pf8-p4-w7W"/>
                             <outlet property="delegate" destination="42T-3o-tFY" id="UgC-EK-417"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Task Done" id="XsO-85-wAk"/>
+                    <navigationItem key="navigationItem" id="XsO-85-wAk">
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sort By" image="arrow.up.arrow.down.circle" catalog="system" id="iAw-7f-VAL"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sortByControl" destination="wgY-Wx-aox" id="CXK-1D-P2g"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqd-Kq-5My" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -210,6 +224,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.up.arrow.down.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -1,22 +1,11 @@
 import UIKit
 
-enum DueDate {
-    case today, week, month
-    
-    func compareDate(date: Date)  {
-        let isToday = Locale.current.calendar.isDateInToday(date)
-        let isWeek = Locale.current.calendar.isDateInWeekend(date)
-        switch self {
-        case .today:
-             isToday
-            
-        case .week:
-             date > Date() && !isToday && isWeek
-        case .month:
-             break
-        }
-    }
-}
+let now = Date()
+let now_1 = Date(timeIntervalSinceNow: 500)
+
+now > now_1
+
+print(now, now_1)
 
 
 let date = Date().addingTimeInterval(500)

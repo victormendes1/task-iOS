@@ -9,7 +9,13 @@ import UIKit
 
 class TaskListDataSource: NSObject {
     
-    var itemsCompleted: [Task] = []
+    var itemsCompleted: [Task] = [] {
+        didSet {
+            print("Salvando")
+            TaskAccessObject.saveTasks(tasks: itemsCompleted)
+        }
+    }
+    
     var items = [
         Task(title: "Evento Apple", date: Date().addingTimeInterval(800.0), notes: "Evento na terça-feita", isComplete: false, completedWhen: Date())!,
         Task(title: "Comprar chocolate", date: Date().addingTimeInterval(800.0), notes: "mais tarde", isComplete: false, completedWhen: Date())!,
@@ -18,7 +24,7 @@ class TaskListDataSource: NSObject {
         Task(title: "Abastecer carro", date: Date().addingTimeInterval(800.0), notes: "mais tarde", isComplete: false, completedWhen: Date())!
     ]
     
-    init(update: (() -> Void)? ) {
+    init(_ update: (() -> Void)? = nil ) {
         if let completion = update {
             completion()
         }

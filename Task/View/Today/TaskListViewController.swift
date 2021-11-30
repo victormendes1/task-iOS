@@ -8,11 +8,21 @@
 import UIKit
 
 class TaskListViewController: UITableViewController {
-    var items: [Task] = []
+    var items: [Task] = [] {
+        didSet {
+            TaskAccessObject.saveTasks(tasks: items)
+        }
+    }
     var itemsComplete: [Task] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let tasks = TaskAccessObject.loadTasks() {
+            if tasks.isEmpty {
+              items = TaskListDataSource().items
+            }
+            items = tasks
+        }
         configureCell()
     }
     
