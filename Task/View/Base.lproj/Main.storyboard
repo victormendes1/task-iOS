@@ -37,7 +37,7 @@
             </objects>
             <point key="canvasLocation" x="1892" y="-607.38916256157643"/>
         </scene>
-        <!--Task Done Table View Controller-->
+        <!--Task Done-->
         <scene sceneID="6zO-YN-uuO">
             <objects>
                 <tableViewController storyboardIdentifier="ReviewTableViewController" id="42T-3o-tFY" customClass="TaskDoneTableViewController" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,25 +45,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <segmentedControl key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="wgY-Wx-aox">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Earliest"/>
-                                <segment title="Latest"/>
-                            </segments>
-                        </segmentedControl>
                         <connections>
                             <outlet property="dataSource" destination="42T-3o-tFY" id="pf8-p4-w7W"/>
                             <outlet property="delegate" destination="42T-3o-tFY" id="UgC-EK-417"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="XsO-85-wAk">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="Task Done" id="XsO-85-wAk">
                         <barButtonItem key="rightBarButtonItem" title="Sort By" image="arrow.up.arrow.down.circle" catalog="system" id="iAw-7f-VAL"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="sortByControl" destination="wgY-Wx-aox" id="CXK-1D-P2g"/>
+                        <outlet property="sortButton" destination="iAw-7f-VAL" id="BZj-go-tOT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqd-Kq-5My" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -18,10 +18,9 @@ class TaskListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let tasks = TaskAccessObject.loadTasks() {
-            if tasks.isEmpty {
-              items = TaskListDataSource().items
-            }
-            items = tasks
+            items = tasks.filter({ $0.isComplete == false })
+            itemsComplete = tasks.filter({ $0.isComplete == true })
+            print(itemsComplete.count)
         }
         configureCell()
     }
@@ -48,7 +47,7 @@ class TaskListViewController: UITableViewController {
             destination?.listTaskComplete = itemsComplete
         }
     }
-
+    
     // MARK: - Private Func
     private func configureCell() {
         tableView.register(type: TaskListTableViewCell.self)

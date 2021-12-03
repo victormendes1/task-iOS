@@ -9,30 +9,40 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+enum Filter {
+    case recent
+    case old
+}
 class TaskDoneTableViewController: UITableViewController {
-    @IBOutlet var sortByControl: UISegmentedControl!
+    @IBOutlet var sortButton: UIBarButtonItem!
     
-    var listTaskComplete: [Task] = []
-    var bag = DisposeBag()
+    var listTaskComplete: [Task] = [] {
+        didSet {
+            TaskAccessObject.saveTasks(tasks: listTaskComplete)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(type: TaskDoneViewCell.self)
-        
+        if let tasks = TaskAccessObject.loadTasks() {
+            listTaskComplete = tasks.filter({ $0.isComplete == true })
+            print(listTaskComplete.count)
+        }
     }
     
-    func configureBlinds() {
-        sortByControl.rx
-            .controlEvent(.valueChanged)
-            .subscribe(onNext: {
-                self.filterTasks(self.listTaskComplete)
-            })
-            .disposed(by: bag)
-    }
+   // adicionar botoes para selecionar como organizar.
     
-    private func filterTasks(_ items: [Task]) {
+    private func filterTasks(_ items: [Task], sortBy: Filter) {
         var filtered = items
+        switch sortBy {
+        case .recent:
         filtered.sort(by: { $0.completedWhen > $1.completedWhen })
-        listTaskComplete = filtered
+            listTaskComplete = filtered
+        case .old:
+            filtered.sort(by: { $0.completedWhen < $1.completedWhen })
+            listTaskComplete = filtered
+        }
     }
     
     // MARK: - Table view data source
