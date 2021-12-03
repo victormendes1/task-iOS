@@ -19,12 +19,21 @@ class TaskDoneTableViewController: UITableViewController {
     var listTaskComplete: [Task] = [] {
         didSet {
             TaskAccessObject.saveTasks(tasks: listTaskComplete)
+            print("salvando...")
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(type: TaskDoneViewCell.self)
+        let earliest = UIAction(title: "Earliest First") { (action) in
+                print("Users action was tapped")
+           }
+        let latest = UIAction(title: "Latest First") { (action) in
+            print("Users action was tapped")
+        }
+        let menu = UIMenu(title: "Sort By", options: .displayInline, children: [earliest, latest])
+        sortButton.menu = menu
         if let tasks = TaskAccessObject.loadTasks() {
             listTaskComplete = tasks.filter({ $0.isComplete == true })
             print(listTaskComplete.count)
@@ -32,7 +41,6 @@ class TaskDoneTableViewController: UITableViewController {
     }
     
    // adicionar botoes para selecionar como organizar.
-    
     private func filterTasks(_ items: [Task], sortBy: Filter) {
         var filtered = items
         switch sortBy {

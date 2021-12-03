@@ -17,11 +17,11 @@ class TaskListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let tasks = TaskAccessObject.loadTasks() {
-            items = tasks.filter({ $0.isComplete == false })
-            itemsComplete = tasks.filter({ $0.isComplete == true })
-            print(itemsComplete.count)
-        }
+//        if let tasks = TaskAccessObject.loadTasks() {
+//            items = tasks.filter({ $0.isComplete == false })
+//            itemsComplete = tasks.filter({ $0.isComplete == true })
+//            print(itemsComplete.count)
+//        }
         configureCell()
     }
     
