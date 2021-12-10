@@ -10,18 +10,12 @@ import UIKit
 class TaskListViewController: UITableViewController {
     var items: [Task] = [] {
         didSet {
-            TaskAccessObject.saveTasks(tasks: items)
+            TaskAccessObject.saveTasks(tasks: items, done: false)
         }
     }
-    var itemsComplete: [Task] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if let tasks = TaskAccessObject.loadTasks() {
-//            items = tasks.filter({ $0.isComplete == false })
-//            itemsComplete = tasks.filter({ $0.isComplete == true })
-//            print(itemsComplete.count)
-//        }
         configureCell()
     }
     
@@ -41,17 +35,13 @@ class TaskListViewController: UITableViewController {
             
             let navigationController = UINavigationController(rootViewController: detailVC)
             present(navigationController, animated: true, completion: nil)
-            
-        } else if segue.identifier == "ShowReviewSegue" {
-            let destination = segue.destination as? TaskDoneTableViewController
-            destination?.listTaskComplete = itemsComplete
         }
     }
     
     // MARK: - Private Func
     private func configureCell() {
         tableView.register(type: TaskListTableViewCell.self)
-        if let tasks = TaskAccessObject.loadTasks(){
+        if let tasks = TaskAccessObject.loadTasks(done: false){
             items = tasks
         }
     }
@@ -80,7 +70,7 @@ class TaskListViewController: UITableViewController {
             tableView.reloadData()
             
             if let index = self.index(item) {
-                self.itemsComplete.append(item)
+                TaskDoneTableViewController().listTaskComplete.append(item)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
                     self.items.remove(at: index)
                     tableView.deleteRows(at:[IndexPath(row: index, section: 0)], with: .fade)

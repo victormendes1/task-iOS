@@ -9,10 +9,16 @@ import UIKit
 
 class TaskListDataSource: NSObject {
     
-    var itemsCompleted: [Task] = [] {
+    var itemsCompleted: [Task] = [
+        Task(title: "Evento Apple", date: Date().addingTimeInterval(800.0), notes: "Evento na terça-feita", isComplete: true, completedWhen: Date())!,
+        Task(title: "Comprar chocolate", date: Date().addingTimeInterval(800.0), notes: "mais tarde", isComplete: true, completedWhen: Date())!,
+        Task(title: "Almoço", date: Date().addingTimeInterval(800.0), notes: "mais tarde", isComplete: true, completedWhen: Date())!,
+        Task(title: "Hallowen na Yollanda", date: Date().addingTimeInterval(800.0), notes: "mais tarde", isComplete: true, completedWhen: Date())!,
+        Task(title: "Abastecer carro", date: Date().addingTimeInterval(800.0), notes: "mais tarde", isComplete: true, completedWhen: Date())!
+    ] {
         didSet {
             print("Salvando")
-            TaskAccessObject.saveTasks(tasks: itemsCompleted)
+            TaskAccessObject.saveTasks(tasks: itemsCompleted, done: true)
         }
     }
     

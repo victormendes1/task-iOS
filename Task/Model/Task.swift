@@ -20,7 +20,8 @@ class Task: NSObject, NSCoding {
     // MARK: Saving data
     static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let archiveURL = documentsDirectory.appendingPathComponent("tasks")
-
+    static let archiveDoneURL = documentsDirectory.appendingPathComponent("compleTasks")
+    
     // MARK:  Types
     struct PropertyKey {
         static let title = "title"

@@ -9,19 +9,19 @@ import Foundation
 
 class TaskAccessObject {
     
-    static func saveTasks(tasks: [Task]) {
+    static func saveTasks(tasks: [Task], done: Bool) {
         do {
             let savedData = try NSKeyedArchiver.archivedData(withRootObject: tasks, requiringSecureCoding: false)
-            try savedData.write(to: Task.archiveURL)
+            try done ? savedData.write(to: Task.archiveDoneURL) : savedData.write(to: Task.archiveURL)
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    static func loadTasks() -> [Task]? {
+    static func loadTasks(done: Bool) -> [Task]? {
         var taskLoaded = [Task]()
         do {
-            let data = try Data(contentsOf: Task.archiveURL)
+            let data = done ?  try Data(contentsOf: Task.archiveDoneURL) : try Data(contentsOf: Task.archiveURL)
             taskLoaded = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [Task]
         } catch {
             print(error.localizedDescription)

@@ -13,44 +13,51 @@ enum Filter {
     case recent
     case old
 }
+
 class TaskDoneTableViewController: UITableViewController {
     @IBOutlet var sortButton: UIBarButtonItem!
     
     var listTaskComplete: [Task] = [] {
         didSet {
-            TaskAccessObject.saveTasks(tasks: listTaskComplete)
-            print("salvando...")
+            TaskAccessObject.saveTasks(tasks: listTaskComplete, done: true)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(type: TaskDoneViewCell.self)
-        let earliest = UIAction(title: "Earliest First") { (action) in
-                print("Users action was tapped")
-           }
-        let latest = UIAction(title: "Latest First") { (action) in
-            print("Users action was tapped")
-        }
-        let menu = UIMenu(title: "Sort By", options: .displayInline, children: [earliest, latest])
-        sortButton.menu = menu
-        if let tasks = TaskAccessObject.loadTasks() {
-            listTaskComplete = tasks.filter({ $0.isComplete == true })
-            print(listTaskComplete.count)
+         menuFilter()
+
+        if let _tasks = TaskAccessObject.loadTasks(done: true) {
+            listTaskComplete = _tasks
         }
     }
     
-   // adicionar botoes para selecionar como organizar.
+    private func menuFilter() {
+        let earliest = UIAction(title: "Earliest First") { (action) in
+            self.filterTasks(self.listTaskComplete, sortBy: .recent)
+        }
+        
+        let latest = UIAction(title: "Latest First") { (action) in
+            self.filterTasks(self.listTaskComplete, sortBy: .old)
+        }
+        
+        let menu = UIMenu(title: "Sort By", options: .displayInline, children: [earliest, latest])
+        sortButton.menu = menu
+    }
+    
+    // Melhorar essa função
     private func filterTasks(_ items: [Task], sortBy: Filter) {
         var filtered = items
         switch sortBy {
         case .recent:
-        filtered.sort(by: { $0.completedWhen > $1.completedWhen })
+            filtered.sort(by: { $0.completedWhen > $1.completedWhen })
             listTaskComplete = filtered
         case .old:
             filtered.sort(by: { $0.completedWhen < $1.completedWhen })
             listTaskComplete = filtered
         }
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
