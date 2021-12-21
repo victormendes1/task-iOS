@@ -16,6 +16,7 @@ class TaskDetailViewController: UITableViewController {
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var notesView: UITextView!
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var task: Task?
     var handler: ((Task) -> Void)?
     
@@ -35,6 +36,7 @@ class TaskDetailViewController: UITableViewController {
         if let title = titleField.text {
             item.title = title
         }
+        appDelegate.scheduleLocalNotification(item)
         return item
     }
     
