@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Lottie
 
 class TaskListTableViewCell: UITableViewCell {
     typealias Action = () -> Void
@@ -16,12 +17,14 @@ class TaskListTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
+    @IBOutlet var checkAnimationView: AnimationView!
     
     private var buttonAction: Action?
     private var bag = DisposeBag()
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        checkAnimationView.isHidden = true
         backgroundCellView.layer.cornerRadius = 8
         configureBindings(true)
     }
@@ -29,7 +32,7 @@ class TaskListTableViewCell: UITableViewCell {
     func configure(_ task: Task, handler: @escaping Action) {
         titleLabel.text = task.title
         dateLabel.text = TaskDueDate().convertDate(task.date.description)
-        isDone(task.isComplete)
+        doneButton.setBackgroundImage(UIImage(systemName: "circle"), for: .normal)
         buttonAction = handler
     }
     
@@ -37,13 +40,26 @@ class TaskListTableViewCell: UITableViewCell {
         doneButton.rx
             .tap
             .subscribe( onNext: { _ in
-                if let completion = self.buttonAction { completion() }
+                if let completion = self.buttonAction {
+                    completion()
+                    self.checkAnimation()
+                }
             })
             .disposed(by: bag)
     }
-    
-    private func isDone(_ done: Bool) {
-        let image = done ? UIImage(systemName: "circle.fill") : UIImage(systemName: "circle")
-        doneButton.setBackgroundImage(image, for: .normal)
+    //; self.checkAnimation() 
+
+    private func checkAnimation() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.doneButton.alpha = 0
+        }, completion: { _ in
+            self.doneButton.isHidden = true
+        })
+        checkAnimationView = AnimationView(name: "checkmark")
+        checkAnimationView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        checkAnimationView.contentMode = .scaleAspectFit
+        checkAnimationView.center = CGPoint(x: 54, y: 39) // TODO: Alterar o centro da animação
+        contentView.addSubview(checkAnimationView)
+        checkAnimationView.play()
     }
 }

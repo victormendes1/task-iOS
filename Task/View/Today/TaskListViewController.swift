@@ -91,7 +91,7 @@ extension TaskListViewController: SaveTaskDelegate {
         task.completedWhen = Date()
         TaskAccessObject.completeItems.append(task)
         items.remove(at:_index)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             tableView.deleteRows(at:[IndexPath(row: _index, section: 0)], with: .fade)
         })
     }

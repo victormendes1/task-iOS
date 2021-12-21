@@ -8,5 +8,6 @@ use_frameworks!
 # Pods for Task 
 pod 'RxSwift', '6.2.0'
 pod 'RxCocoa', '6.2.0'
+pod 'lottie-ios'
 
 end

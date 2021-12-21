@@ -67,6 +67,7 @@ class TaskDoneTableViewController: UITableViewController {
         case .recent:
             filtered.sort(by: { $0.completedWhen > $1.completedWhen })
             completeItems = filtered
+            
         case .old:
             filtered.sort(by: { $0.completedWhen < $1.completedWhen })
             completeItems = filtered
