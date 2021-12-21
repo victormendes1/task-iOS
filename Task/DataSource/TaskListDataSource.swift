@@ -18,7 +18,7 @@ class TaskListDataSource: NSObject {
     ] {
         didSet {
             print("Salvando")
-            TaskAccessObject.saveTasks(tasks: itemsCompleted, done: true)
+           // TaskAccessObject.saveTasks(tasks: itemsCompleted, done: true)
         }
     }
     

@@ -8,11 +8,7 @@
 import UIKit
 
 class TaskListViewController: UITableViewController {
-    var items: [Task] = [] {
-        didSet {
-            TaskAccessObject.saveTasks(tasks: items, done: false)
-        }
-    }
+    var items: [Task] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,24 +31,39 @@ class TaskListViewController: UITableViewController {
             
             let navigationController = UINavigationController(rootViewController: detailVC)
             present(navigationController, animated: true, completion: nil)
+        } else if segue.identifier == "ShowReviewSegue" {
+            let viewController = TaskDoneTableViewController()
+            viewController.delegate = self
         }
-    }
-    
-    // MARK: - Private Func
-    private func configureCell() {
-        tableView.register(type: TaskListTableViewCell.self)
-        if let tasks = TaskAccessObject.loadTasks(done: false){
-            items = tasks
-        }
-    }
-    
-    func index(_ item: Task) -> Array<Task>.Index? {
-        items.firstIndex(where: { $0.title == item.title})
     }
     
     func add(_ item: Task) {
         items.append(item)
+        saveTasks()
         tableView.reloadData()
+    }
+    
+    // MARK: - Private Functions
+    private func configureCell() {
+        tableView.register(type: TaskListTableViewCell.self)
+        loadTasks()
+    }
+    
+    private func saveTasks() {
+        TaskAccessObject.newItems = items
+    }
+    
+    private func loadTasks() {
+        if items.isEmpty {
+            if let _tasks = TaskAccessObject.loadTasks(done: false) {
+                items = _tasks.filter { $0.isComplete == false}
+            }
+        }
+    }
+    
+    private func index(_ item: Task) -> Int {
+        guard let index = items.firstIndex(where: { $0 == item }).map({ Int($0) }) else { return 0 }
+        return index
     }
     
     //MARK: - TableView
@@ -63,20 +74,25 @@ class TaskListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TaskListTableViewCell = tableView.dequeueReusableCell(indexPath)
         let item = items[indexPath.row]
-        
         cell.configure(item) {
-            item.isComplete.toggle()
-            item.completedWhen = Date()
-            tableView.reloadData()
-            
-            if let index = self.index(item) {
-                TaskDoneTableViewController().listTaskComplete.append(item)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                    self.items.remove(at: index)
-                    tableView.deleteRows(at:[IndexPath(row: index, section: 0)], with: .fade)
-                })
-            }
+            self.saveCompletedTask(item, tableView)
+            self.saveTasks()
         }
         return cell
+    }
+}
+
+// MARK: - Extension
+// Responsável de salvar as tarefas pronta
+extension TaskListViewController: SaveTaskDelegate {
+    func saveCompletedTask(_ task: Task, _ tableView: UITableView) {
+        let _index = index(task)
+        task.isComplete.toggle()
+        task.completedWhen = Date()
+        TaskAccessObject.completeItems.append(task)
+        items.remove(at:_index)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+            tableView.deleteRows(at:[IndexPath(row: _index, section: 0)], with: .fade)
+        })
     }
 }

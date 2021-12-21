@@ -9,6 +9,22 @@ import Foundation
 
 class TaskAccessObject {
     
+    static var newItems: [Task] = [] {
+        didSet {
+            saveTasks(tasks: newItems, done: false)
+        }
+    }
+    
+    static var completeItems: [Task] {
+        get {
+            guard let tasks = loadTasks(done: true) else { return [] }
+            return tasks
+        }
+        set {
+            saveTasks(tasks: newValue, done: true)
+        }
+    }
+    
     static func saveTasks(tasks: [Task], done: Bool) {
         do {
             let savedData = try NSKeyedArchiver.archivedData(withRootObject: tasks, requiringSecureCoding: false)
