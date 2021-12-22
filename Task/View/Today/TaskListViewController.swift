@@ -74,12 +74,15 @@ class TaskListViewController: UITableViewController {
     private func addNewTask() {
         let add = UIButton(type: .custom)
         let feedback = UIImpactFeedbackGenerator(style: .heavy)
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
+        guard let largePlus = UIImage(systemName: "plus", withConfiguration: largeConfig) else { return }
         add.frame = CGRect(x: 290, y: 720, width: 70, height: 70)
-        add.backgroundColor = .lightGray
+        add.backgroundColor = .systemBlue
+        add.tintColor = .white
         add.layer.cornerRadius = 0.5 * add.bounds.size.width
         add.clipsToBounds = true
-        add.setImage(UIImage(systemName: "plus"), for: .normal)
-        add.imageView?.contentMode = .scaleToFill
+        
+        add.setImage(largePlus, for: .normal)
         navigationController?.view.addSubview(add)
        
         add.rx
