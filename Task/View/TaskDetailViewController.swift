@@ -21,7 +21,7 @@ class TaskDetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleField.becomeFirstResponder()
+        //titleField.becomeFirstResponder()
         self.task = Task(title: "", date: Date(), notes: "", isComplete: false, completedWhen: Date())
     }
     

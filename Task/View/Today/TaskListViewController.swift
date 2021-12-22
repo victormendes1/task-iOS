@@ -71,9 +71,6 @@ class TaskListViewController: UITableViewController {
     }
     
     private func addNewTask() {
-//        let background = UIView(frame: CGRect(x: 290, y: 700, width: 60, height: 60))
-//        background.backgroundColor = .lightGray
-        
         let add = UIButton(type: .custom)
         add.frame = CGRect(x: 290, y: 718, width: 70, height: 70)
         add.backgroundColor = .lightGray
@@ -91,6 +88,14 @@ class TaskListViewController: UITableViewController {
                 guard let vcAddNewTask = navigationDetail.viewControllers.first as? TaskDetailViewController else { return }
                 vcAddNewTask.handler = { self.add($0) }
                 self.showDetailViewController(navigationDetail, sender: nil)
+            })
+            .disposed(by: disposed)
+        
+        add.rx
+            .controlEvent(.touchDown)
+            .subscribe(onNext: {
+                let geretator = UIImpactFeedbackGenerator(style: .heavy)
+                geretator.impactOccurred()
             })
             .disposed(by: disposed)
     }
