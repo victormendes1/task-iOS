@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class TaskListViewController: UITableViewController {
     var items: [Task] = []
+    var disposed = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCell()
+        addNewTask()
     }
     
     // MARK: - Navigation
@@ -64,6 +68,31 @@ class TaskListViewController: UITableViewController {
     private func index(_ item: Task) -> Int {
         guard let index = items.firstIndex(where: { $0 == item }).map({ Int($0) }) else { return 0 }
         return index
+    }
+    
+    private func addNewTask() {
+//        let background = UIView(frame: CGRect(x: 290, y: 700, width: 60, height: 60))
+//        background.backgroundColor = .lightGray
+        
+        let add = UIButton(type: .custom)
+        add.frame = CGRect(x: 290, y: 718, width: 70, height: 70)
+        add.backgroundColor = .lightGray
+        add.layer.cornerRadius = 0.5 * add.bounds.size.width
+        add.clipsToBounds = true
+        add.setImage(UIImage(systemName: "plus"), for: .normal)
+        add.imageView?.contentMode = .scaleToFill
+        navigationController?.view.addSubview(add)
+       
+        add.rx
+            .tap
+            .subscribe(onNext: {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let navigationDetail: UINavigationController = storyboard.instantiateViewController(identifier: "NavigationTaskDetail")
+                guard let vcAddNewTask = navigationDetail.viewControllers.first as? TaskDetailViewController else { return }
+                vcAddNewTask.handler = { self.add($0) }
+                self.showDetailViewController(navigationDetail, sender: nil)
+            })
+            .disposed(by: disposed)
     }
     
     //MARK: - TableView

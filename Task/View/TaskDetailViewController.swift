@@ -10,7 +10,6 @@ import RxSwift
 import RxCocoa
 
 class TaskDetailViewController: UITableViewController {
-    
     @IBOutlet var saveButton: UIBarButtonItem!
     @IBOutlet var titleField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
