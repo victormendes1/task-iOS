@@ -21,17 +21,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Today" largeTitleDisplayMode="always" id="05y-ts-wzV">
-                        <barButtonItem key="leftBarButtonItem" title="Review" id="TUV-QG-Qrd">
-                            <connections>
-                                <segue destination="42T-3o-tFY" kind="show" identifier="ShowReviewSegue" id="ZJ9-jg-7cb"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ODJ-rk-gmh">
-                            <connections>
-                                <segue destination="tk0-dN-rV5" kind="presentation" identifier="ShowNewTaskSegue" id="eTa-7W-61L"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="ellipsis.circle" catalog="system" id="ODJ-rk-gmh"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="showOptionsButton" destination="ODJ-rk-gmh" id="toC-J2-vqC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0UD-ug-itV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,7 +60,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="TaskDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LjK-7e-Pam" customClass="TaskDetailViewController" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rLp-6d-nXr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -201,7 +195,7 @@
                 <navigationController storyboardIdentifier="NavigationTaskDetail" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tk0-dN-rV5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oNe-qB-dgy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -216,6 +210,7 @@
     </scenes>
     <resources>
         <image name="arrow.up.arrow.down.circle" catalog="system" width="128" height="121"/>
+        <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

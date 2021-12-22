@@ -11,12 +11,15 @@ import RxSwift
 import Lottie
 
 class TaskListViewController: UITableViewController {
+    @IBOutlet var showOptionsButton: UIBarButtonItem!
+    
     var items: [Task] = []
     var disposed = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCell()
+        showMenuOptions()
         addNewTask()
     }
     
@@ -37,8 +40,6 @@ class TaskListViewController: UITableViewController {
             let navigationController = UINavigationController(rootViewController: detailVC)
             present(navigationController, animated: true, completion: nil)
         } else if segue.identifier == "ShowReviewSegue" {
-            let viewController = TaskDoneTableViewController()
-            viewController.delegate = self
         }
     }
     
@@ -129,6 +130,18 @@ class TaskListViewController: UITableViewController {
                 })
             })
             .disposed(by: disposed)
+    }
+    
+    private func showMenuOptions() {
+        let reviewTaskDone = UIAction(title: "Review Tasks Done") { action in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController: TaskDoneTableViewController = storyboard.instantiateViewController(identifier: "ReviewTableViewController")
+            viewController.delegate = self
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+        
+        let options = UIMenu(title: "Options", options: .displayInline, children: [reviewTaskDone])
+        showOptionsButton.menu = options
     }
     
     //MARK: - TableView
