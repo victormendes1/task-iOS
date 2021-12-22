@@ -80,8 +80,12 @@ class TaskListViewController: UITableViewController {
         add.backgroundColor = .systemBlue
         add.tintColor = .white
         add.layer.cornerRadius = 0.5 * add.bounds.size.width
-        add.clipsToBounds = true
-        
+        add.layer.shadowColor = UIColor.darkGray.cgColor
+        add.layer.shadowOffset = CGSize(width: 1, height: 2)
+        add.layer.masksToBounds = false
+        add.layer.shadowRadius = 4
+        add.layer.shadowOpacity = 0.8
+
         add.setImage(largePlus, for: .normal)
         navigationController?.view.addSubview(add)
        
