@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Lottie
 
 class TaskListViewController: UITableViewController {
     var items: [Task] = []
@@ -31,7 +32,7 @@ class TaskListViewController: UITableViewController {
         } else if segue.identifier == "ShowNewTaskSegue" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let detailVC: TaskDetailViewController = storyboard.instantiateViewController(identifier: "TaskDetailViewController")
-            detailVC.handler = { self.add($0) }
+            detailVC.handler = { self.addTask($0) }
             
             let navigationController = UINavigationController(rootViewController: detailVC)
             present(navigationController, animated: true, completion: nil)
@@ -41,7 +42,7 @@ class TaskListViewController: UITableViewController {
         }
     }
     
-    func add(_ item: Task) {
+    func addTask(_ item: Task) {
         items.append(item)
         saveTasks()
         tableView.reloadData()
@@ -72,7 +73,8 @@ class TaskListViewController: UITableViewController {
     
     private func addNewTask() {
         let add = UIButton(type: .custom)
-        add.frame = CGRect(x: 290, y: 718, width: 70, height: 70)
+        let feedback = UIImpactFeedbackGenerator(style: .heavy)
+        add.frame = CGRect(x: 290, y: 720, width: 70, height: 70)
         add.backgroundColor = .lightGray
         add.layer.cornerRadius = 0.5 * add.bounds.size.width
         add.clipsToBounds = true
@@ -86,7 +88,7 @@ class TaskListViewController: UITableViewController {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationDetail: UINavigationController = storyboard.instantiateViewController(identifier: "NavigationTaskDetail")
                 guard let vcAddNewTask = navigationDetail.viewControllers.first as? TaskDetailViewController else { return }
-                vcAddNewTask.handler = { self.add($0) }
+                vcAddNewTask.handler = { self.addTask($0) }
                 self.showDetailViewController(navigationDetail, sender: nil)
             })
             .disposed(by: disposed)
@@ -94,8 +96,30 @@ class TaskListViewController: UITableViewController {
         add.rx
             .controlEvent(.touchDown)
             .subscribe(onNext: {
-                let geretator = UIImpactFeedbackGenerator(style: .heavy)
-                geretator.impactOccurred()
+                feedback.impactOccurred()
+                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+                    add.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                })
+            })
+            .disposed(by: disposed)
+        
+        add.rx
+            .controlEvent(.touchUpOutside)
+            .subscribe(onNext: {
+                feedback.impactOccurred()
+                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+                    add.transform = CGAffineTransform.identity
+                })
+            })
+            .disposed(by: disposed)
+        
+        add.rx
+            .controlEvent(.touchUpInside)
+            .subscribe(onNext: {
+                feedback.impactOccurred()
+                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+                    add.transform = CGAffineTransform.identity
+                })
             })
             .disposed(by: disposed)
     }

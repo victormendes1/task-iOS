@@ -10,6 +10,7 @@
 		5706590F272ABEC600850249 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706590E272ABEC600850249 /* UITableView.swift */; };
 		575382EB26EE523D00FA03E5 /* TaskDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575382EA26EE523D00FA03E5 /* TaskDetailViewDataSource.swift */; };
 		576849C627727AD200B4CDAD /* checkmark.json in Resources */ = {isa = PBXBuildFile; fileRef = 576849C527727AD200B4CDAD /* checkmark.json */; };
+		576849C82773A99100B4CDAD /* add.json in Resources */ = {isa = PBXBuildFile; fileRef = 576849C72773A98F00B4CDAD /* add.json */; };
 		577388AA273074D800677677 /* TaskDoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577388A9273074D800677677 /* TaskDoneTableViewController.swift */; };
 		577388AC2733508100677677 /* TaskDueDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577388AB2733508000677677 /* TaskDueDate.swift */; };
 		5776C5F7271F94A300837301 /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C5F5271F94A300837301 /* TaskListTableViewCell.swift */; };
@@ -34,6 +35,7 @@
 		5706590E272ABEC600850249 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		575382EA26EE523D00FA03E5 /* TaskDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewDataSource.swift; sourceTree = "<group>"; };
 		576849C527727AD200B4CDAD /* checkmark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkmark.json; sourceTree = "<group>"; };
+		576849C72773A98F00B4CDAD /* add.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = add.json; sourceTree = "<group>"; };
 		577388A9273074D800677677 /* TaskDoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDoneTableViewController.swift; sourceTree = "<group>"; };
 		577388AB2733508000677677 /* TaskDueDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDueDate.swift; sourceTree = "<group>"; };
 		5776C5F5271F94A300837301 /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				5795176F26AF2D4A0019280E /* Assets.xcassets */,
 				5795177126AF2D4A0019280E /* LaunchScreen.storyboard */,
 				5795177426AF2D4A0019280E /* Info.plist */,
+				576849C72773A98F00B4CDAD /* add.json */,
 				576849C527727AD200B4CDAD /* checkmark.json */,
 			);
 			path = Task;
@@ -266,6 +269,7 @@
 			files = (
 				5795177326AF2D4A0019280E /* LaunchScreen.storyboard in Resources */,
 				5795177026AF2D4A0019280E /* Assets.xcassets in Resources */,
+				576849C82773A99100B4CDAD /* add.json in Resources */,
 				57BAFDDC2754FA94001842F9 /* TaskDoneViewCell.xib in Resources */,
 				576849C627727AD200B4CDAD /* checkmark.json in Resources */,
 				5776C5F8271F94A300837301 /* TaskListTableViewCell.xib in Resources */,
