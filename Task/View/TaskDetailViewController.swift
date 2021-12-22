@@ -10,18 +10,18 @@ import RxSwift
 import RxCocoa
 
 class TaskDetailViewController: UITableViewController {
-    
     @IBOutlet var saveButton: UIBarButtonItem!
     @IBOutlet var titleField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var notesView: UITextView!
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var task: Task?
     var handler: ((Task) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleField.becomeFirstResponder()
+        //titleField.becomeFirstResponder()
         self.task = Task(title: "", date: Date(), notes: "", isComplete: false, completedWhen: Date())
     }
     
@@ -35,6 +35,7 @@ class TaskDetailViewController: UITableViewController {
         if let title = titleField.text {
             item.title = title
         }
+        appDelegate.scheduleLocalNotification(item)
         return item
     }
     

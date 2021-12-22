@@ -6,13 +6,18 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+import Lottie
 
 class TaskListViewController: UITableViewController {
     var items: [Task] = []
+    var disposed = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCell()
+        addNewTask()
     }
     
     // MARK: - Navigation
@@ -27,7 +32,7 @@ class TaskListViewController: UITableViewController {
         } else if segue.identifier == "ShowNewTaskSegue" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let detailVC: TaskDetailViewController = storyboard.instantiateViewController(identifier: "TaskDetailViewController")
-            detailVC.handler = { self.add($0) }
+            detailVC.handler = { self.addTask($0) }
             
             let navigationController = UINavigationController(rootViewController: detailVC)
             present(navigationController, animated: true, completion: nil)
@@ -37,7 +42,7 @@ class TaskListViewController: UITableViewController {
         }
     }
     
-    func add(_ item: Task) {
+    func addTask(_ item: Task) {
         items.append(item)
         saveTasks()
         tableView.reloadData()
@@ -64,6 +69,66 @@ class TaskListViewController: UITableViewController {
     private func index(_ item: Task) -> Int {
         guard let index = items.firstIndex(where: { $0 == item }).map({ Int($0) }) else { return 0 }
         return index
+    }
+    
+    private func addNewTask() {
+        let add = UIButton(type: .custom)
+        let feedback = UIImpactFeedbackGenerator(style: .heavy)
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
+        guard let largePlus = UIImage(systemName: "plus", withConfiguration: largeConfig) else { return }
+        add.frame = CGRect(x: 290, y: 720, width: 70, height: 70)
+        add.backgroundColor = .systemBlue
+        add.tintColor = .white
+        add.layer.cornerRadius = 0.5 * add.bounds.size.width
+        add.layer.shadowColor = UIColor.darkGray.cgColor
+        add.layer.shadowOffset = CGSize(width: 1, height: 2)
+        add.layer.masksToBounds = false
+        add.layer.shadowRadius = 4
+        add.layer.shadowOpacity = 0.8
+
+        add.setImage(largePlus, for: .normal)
+        navigationController?.view.addSubview(add)
+       
+        add.rx
+            .tap
+            .subscribe(onNext: {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let navigationDetail: UINavigationController = storyboard.instantiateViewController(identifier: "NavigationTaskDetail")
+                guard let vcAddNewTask = navigationDetail.viewControllers.first as? TaskDetailViewController else { return }
+                vcAddNewTask.handler = { self.addTask($0) }
+                self.showDetailViewController(navigationDetail, sender: nil)
+            })
+            .disposed(by: disposed)
+        
+        add.rx
+            .controlEvent(.touchDown)
+            .subscribe(onNext: {
+                feedback.impactOccurred()
+                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+                    add.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                })
+            })
+            .disposed(by: disposed)
+        
+        add.rx
+            .controlEvent(.touchUpOutside)
+            .subscribe(onNext: {
+                feedback.impactOccurred()
+                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+                    add.transform = CGAffineTransform.identity
+                })
+            })
+            .disposed(by: disposed)
+        
+        add.rx
+            .controlEvent(.touchUpInside)
+            .subscribe(onNext: {
+                feedback.impactOccurred()
+                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+                    add.transform = CGAffineTransform.identity
+                })
+            })
+            .disposed(by: disposed)
     }
     
     //MARK: - TableView
