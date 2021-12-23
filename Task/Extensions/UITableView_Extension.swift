@@ -1,5 +1,5 @@
 //
-//  UITableView.swift
+//  UITableView_Extension.swift
 //  Task
 //
 //  Created by Victor on 28/10/21.

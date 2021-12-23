@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HJ5-jD-kXK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4tb-md-mAg">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -171,10 +172,42 @@
             </objects>
             <point key="canvasLocation" x="3610" y="-607"/>
         </scene>
+        <!--Initial Animation View Controller-->
+        <scene sceneID="ERl-Hc-KbO">
+            <objects>
+                <viewController id="4tb-md-mAg" customClass="InitialAnimationViewController" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cce-Tw-uN9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSU-yb-6dL" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="62.666666666666657" y="281" width="249.99999999999997" height="250"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Dcz-me-Fbd"/>
+                                    <constraint firstAttribute="width" constant="250" id="fiK-am-hCn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ON1-HU-fs4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SSU-yb-6dL" firstAttribute="centerY" secondItem="cce-Tw-uN9" secondAttribute="centerY" id="X8W-dO-vey"/>
+                            <constraint firstItem="SSU-yb-6dL" firstAttribute="centerX" secondItem="cce-Tw-uN9" secondAttribute="centerX" id="jnh-ie-FNp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logoView" destination="SSU-yb-6dL" id="I9V-d9-FlV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J7g-f6-0gN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="426" y="-607"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="oCG-gX-N1k">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HJ5-jD-kXK" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationMan" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HJ5-jD-kXK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="t6O-k4-WRZ">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -208,6 +241,9 @@
             <point key="canvasLocation" x="2719" y="-607"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="SSU-yb-6dL"/>
+    </designables>
     <resources>
         <image name="arrow.up.arrow.down.circle" catalog="system" width="128" height="121"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>

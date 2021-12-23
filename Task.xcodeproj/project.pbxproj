@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5706590F272ABEC600850249 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706590E272ABEC600850249 /* UITableView.swift */; };
-		575382EB26EE523D00FA03E5 /* TaskDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575382EA26EE523D00FA03E5 /* TaskDetailViewDataSource.swift */; };
+		5706590F272ABEC600850249 /* UITableView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706590E272ABEC600850249 /* UITableView_Extension.swift */; };
 		576849C627727AD200B4CDAD /* checkmark.json in Resources */ = {isa = PBXBuildFile; fileRef = 576849C527727AD200B4CDAD /* checkmark.json */; };
+		576849CC2774BAAC00B4CDAD /* checkMark_Logo.json in Resources */ = {isa = PBXBuildFile; fileRef = 576849CB2774BAAC00B4CDAD /* checkMark_Logo.json */; };
+		576849D92774E7BF00B4CDAD /* InitialAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576849D82774E7BF00B4CDAD /* InitialAnimationViewController.swift */; };
 		577388AA273074D800677677 /* TaskDoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577388A9273074D800677677 /* TaskDoneTableViewController.swift */; };
 		577388AC2733508100677677 /* TaskDueDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577388AB2733508000677677 /* TaskDueDate.swift */; };
 		5776C5F7271F94A300837301 /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C5F5271F94A300837301 /* TaskListTableViewCell.swift */; };
 		5776C5F8271F94A300837301 /* TaskListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5776C5F6271F94A300837301 /* TaskListTableViewCell.xib */; };
 		578309E1272B68BB0037EB4A /* TaskAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578309E0272B68BB0037EB4A /* TaskAccessObject.swift */; };
-		5785FFBC26EBDB890035175F /* TaskListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785FFBB26EBDB890035175F /* TaskListDataSource.swift */; };
 		5795176726AF2D420019280E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5795176626AF2D420019280E /* AppDelegate.swift */; };
 		5795176926AF2D420019280E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5795176826AF2D420019280E /* SceneDelegate.swift */; };
 		5795176E26AF2D420019280E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5795176C26AF2D420019280E /* Main.storyboard */; };
@@ -31,22 +31,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5706590E272ABEC600850249 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		575382EA26EE523D00FA03E5 /* TaskDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewDataSource.swift; sourceTree = "<group>"; };
+		5706590E272ABEC600850249 /* UITableView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView_Extension.swift; sourceTree = "<group>"; };
 		576849C527727AD200B4CDAD /* checkmark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkmark.json; sourceTree = "<group>"; };
+		576849CB2774BAAC00B4CDAD /* checkMark_Logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkMark_Logo.json; sourceTree = "<group>"; };
+		576849D82774E7BF00B4CDAD /* InitialAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialAnimationViewController.swift; sourceTree = "<group>"; };
 		577388A9273074D800677677 /* TaskDoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDoneTableViewController.swift; sourceTree = "<group>"; };
 		577388AB2733508000677677 /* TaskDueDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDueDate.swift; sourceTree = "<group>"; };
 		5776C5F5271F94A300837301 /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
 		5776C5F6271F94A300837301 /* TaskListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListTableViewCell.xib; sourceTree = "<group>"; };
 		578309E0272B68BB0037EB4A /* TaskAccessObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAccessObject.swift; sourceTree = "<group>"; };
-		5785FFBB26EBDB890035175F /* TaskListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListDataSource.swift; sourceTree = "<group>"; };
 		5795176326AF2D420019280E /* Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Task.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5795176626AF2D420019280E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5795176826AF2D420019280E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5795176D26AF2D420019280E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5795176F26AF2D4A0019280E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5795177226AF2D4A0019280E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5795177426AF2D4A0019280E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5795177426AF2D4A0019280E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Task/Info.plist; sourceTree = SOURCE_ROOT; };
 		5795177B26AF2F6B0019280E /* TaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		5795177C26AF2F6B0019280E /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		57AA33D126C454CB00D839F2 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
@@ -79,23 +79,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		57065914272AC0DA00850249 /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				5785FFBB26EBDB890035175F /* TaskListDataSource.swift */,
-				575382EA26EE523D00FA03E5 /* TaskDetailViewDataSource.swift */,
-			);
-			path = DataSource;
-			sourceTree = "<group>";
-		};
 		5715864426C1477C0060D1F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				576849CF2774C2F900B4CDAD /* Initial Animation */,
 				57BAFDD52754F99D001842F9 /* Today */,
 				57BAFDD62754F9AB001842F9 /* Done */,
-				57AA33D126C454CB00D839F2 /* TaskDetailViewController.swift */,
+				576849CE2774C22A00B4CDAD /* Detail */,
 				5795176C26AF2D420019280E /* Main.storyboard */,
-				57E2753D272C6652000F2167 /* Cell Detail */,
+				5795177126AF2D4A0019280E /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -110,10 +102,37 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		576849CD2774C1D600B4CDAD /* Assets  */ = {
+			isa = PBXGroup;
+			children = (
+				5795176F26AF2D4A0019280E /* Assets.xcassets */,
+				576849CB2774BAAC00B4CDAD /* checkMark_Logo.json */,
+				576849C527727AD200B4CDAD /* checkmark.json */,
+			);
+			path = "Assets ";
+			sourceTree = "<group>";
+		};
+		576849CE2774C22A00B4CDAD /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				57AA33D126C454CB00D839F2 /* TaskDetailViewController.swift */,
+				57E2753D272C6652000F2167 /* Cell */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		576849CF2774C2F900B4CDAD /* Initial Animation */ = {
+			isa = PBXGroup;
+			children = (
+				576849D82774E7BF00B4CDAD /* InitialAnimationViewController.swift */,
+			);
+			path = "Initial Animation";
+			sourceTree = "<group>";
+		};
 		576E38AC26CA66D400EC1714 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5706590E272ABEC600850249 /* UITableView.swift */,
+				5706590E272ABEC600850249 /* UITableView_Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -141,14 +160,11 @@
 			children = (
 				5795176626AF2D420019280E /* AppDelegate.swift */,
 				5795176826AF2D420019280E /* SceneDelegate.swift */,
-				576E38AC26CA66D400EC1714 /* Extensions */,
 				5715864526C147AB0060D1F5 /* Model */,
-				57065914272AC0DA00850249 /* DataSource */,
 				5715864426C1477C0060D1F5 /* View */,
-				5795176F26AF2D4A0019280E /* Assets.xcassets */,
-				5795177126AF2D4A0019280E /* LaunchScreen.storyboard */,
+				576849CD2774C1D600B4CDAD /* Assets  */,
 				5795177426AF2D4A0019280E /* Info.plist */,
-				576849C527727AD200B4CDAD /* checkmark.json */,
+				576E38AC26CA66D400EC1714 /* Extensions */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -189,12 +205,12 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		57E2753D272C6652000F2167 /* Cell Detail */ = {
+		57E2753D272C6652000F2167 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				57D6288C272C7341000B6D0D /* TaskDetailTableViewCell.swift */,
 			);
-			path = "Cell Detail";
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		DCABD8B9B62E7F4F1D07DC59 /* Frameworks */ = {
@@ -267,6 +283,7 @@
 				5795177326AF2D4A0019280E /* LaunchScreen.storyboard in Resources */,
 				5795177026AF2D4A0019280E /* Assets.xcassets in Resources */,
 				57BAFDDC2754FA94001842F9 /* TaskDoneViewCell.xib in Resources */,
+				576849CC2774BAAC00B4CDAD /* checkMark_Logo.json in Resources */,
 				576849C627727AD200B4CDAD /* checkmark.json in Resources */,
 				5776C5F8271F94A300837301 /* TaskListTableViewCell.xib in Resources */,
 				5795176E26AF2D420019280E /* Main.storyboard in Resources */,
@@ -323,8 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57AA33D226C454CC00D839F2 /* TaskDetailViewController.swift in Sources */,
-				5706590F272ABEC600850249 /* UITableView.swift in Sources */,
-				575382EB26EE523D00FA03E5 /* TaskDetailViewDataSource.swift in Sources */,
+				5706590F272ABEC600850249 /* UITableView_Extension.swift in Sources */,
 				57BAFDDB2754FA94001842F9 /* TaskDoneViewCell.swift in Sources */,
 				5776C5F7271F94A300837301 /* TaskListTableViewCell.swift in Sources */,
 				5795176726AF2D420019280E /* AppDelegate.swift in Sources */,
@@ -334,7 +350,7 @@
 				577388AC2733508100677677 /* TaskDueDate.swift in Sources */,
 				57D6288D272C7341000B6D0D /* TaskDetailTableViewCell.swift in Sources */,
 				577388AA273074D800677677 /* TaskDoneTableViewController.swift in Sources */,
-				5785FFBC26EBDB890035175F /* TaskListDataSource.swift in Sources */,
+				576849D92774E7BF00B4CDAD /* InitialAnimationViewController.swift in Sources */,
 				578309E1272B68BB0037EB4A /* TaskAccessObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +506,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "Victor-Mendes.Task";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -510,6 +527,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "Victor-Mendes.Task";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

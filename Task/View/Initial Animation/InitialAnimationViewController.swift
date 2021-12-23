@@ -1,0 +1,38 @@
+//
+//  InitialAnimationViewController.swift
+//  Task
+//
+//  Created by Victor Mendes on 23/12/21.
+//
+
+import UIKit
+import Lottie
+
+class InitialAnimationViewController: UIViewController {
+    @IBOutlet var logoView: AnimationView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        animation()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        logoView.center = view.center
+    }
+    
+    private func animation() {
+        logoView = AnimationView(name: "checkMark_Logo")
+        logoView.contentMode = .scaleAspectFit
+        view.addSubview(logoView)
+        logoView.loopMode = .autoReverse
+        logoView.play()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController: UINavigationController = storyboard.instantiateViewController(identifier: "NavigationMan")
+            navigationController.modalTransitionStyle = .crossDissolve
+            navigationController.modalPresentationStyle = .fullScreen
+            self.present(navigationController, animated: true)
+        })
+    }
+}
