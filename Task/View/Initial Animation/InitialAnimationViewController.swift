@@ -25,9 +25,8 @@ class InitialAnimationViewController: UIViewController {
         logoView = AnimationView(name: "checkMark_Logo")
         logoView.contentMode = .scaleAspectFit
         view.addSubview(logoView)
-        logoView.loopMode = .autoReverse
-        logoView.play()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
+        logoView.play(fromFrame: 58.0000023623884, toFrame: 1, loopMode: .autoReverse)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationController: UINavigationController = storyboard.instantiateViewController(identifier: "NavigationMan")
             navigationController.modalTransitionStyle = .crossDissolve
