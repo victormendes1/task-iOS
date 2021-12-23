@@ -159,6 +159,14 @@ class TaskListViewController: UITableViewController {
         }
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController: UINavigationController = storyboard.instantiateViewController(identifier: "NavigationTaskDetail")
+        guard let detailVC = navigationController.viewControllers.first as? TaskDetailViewController else { return }
+        detailVC.task = items[indexPath.row]
+        showDetailViewController(navigationController, sender: nil)
+    }
 }
 
 // MARK: - Extension

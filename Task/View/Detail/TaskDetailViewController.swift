@@ -22,7 +22,11 @@ class TaskDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //titleField.becomeFirstResponder()
-        self.task = Task(title: "", date: Date(), notes: "", isComplete: false, completedWhen: Date())
+        if task == nil {
+            task = Task(title: "", date: Date(), notes: "", isComplete: false, completedWhen: Date())
+        } else {
+            configureShowTasDetail()
+        }
     }
     
     
@@ -39,10 +43,15 @@ class TaskDetailViewController: UITableViewController {
         return item
     }
     
+    func configureShowTasDetail() {
+        guard let _task = task else { return }
+        titleField.text = _task.title
+        datePicker.date = _task.date
+        notesView.text = _task.notes
+    }
+    
     @IBAction func saveTask(_ sender: Any) {
-        if let item = createNewTask() {
-            handler?(item)
-            }
+        if let item = createNewTask() { handler?(item) }
             dismiss(animated: true, completion: nil)
         }
     
