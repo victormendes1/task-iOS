@@ -11,6 +11,7 @@
 		576849C627727AD200B4CDAD /* checkmark.json in Resources */ = {isa = PBXBuildFile; fileRef = 576849C527727AD200B4CDAD /* checkmark.json */; };
 		576849CC2774BAAC00B4CDAD /* checkMark_Logo.json in Resources */ = {isa = PBXBuildFile; fileRef = 576849CB2774BAAC00B4CDAD /* checkMark_Logo.json */; };
 		576849D92774E7BF00B4CDAD /* InitialAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576849D82774E7BF00B4CDAD /* InitialAnimationViewController.swift */; };
+		576849DE2775477800B4CDAD /* UIButton_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576849DD2775477700B4CDAD /* UIButton_Extension.swift */; };
 		577388AA273074D800677677 /* TaskDoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577388A9273074D800677677 /* TaskDoneTableViewController.swift */; };
 		577388AC2733508100677677 /* TaskDueDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577388AB2733508000677677 /* TaskDueDate.swift */; };
 		5776C5F7271F94A300837301 /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C5F5271F94A300837301 /* TaskListTableViewCell.swift */; };
@@ -35,6 +36,7 @@
 		576849C527727AD200B4CDAD /* checkmark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkmark.json; sourceTree = "<group>"; };
 		576849CB2774BAAC00B4CDAD /* checkMark_Logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkMark_Logo.json; sourceTree = "<group>"; };
 		576849D82774E7BF00B4CDAD /* InitialAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialAnimationViewController.swift; sourceTree = "<group>"; };
+		576849DD2775477700B4CDAD /* UIButton_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton_Extension.swift; sourceTree = "<group>"; };
 		577388A9273074D800677677 /* TaskDoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDoneTableViewController.swift; sourceTree = "<group>"; };
 		577388AB2733508000677677 /* TaskDueDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDueDate.swift; sourceTree = "<group>"; };
 		5776C5F5271F94A300837301 /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				5706590E272ABEC600850249 /* UITableView_Extension.swift */,
+				576849DD2775477700B4CDAD /* UIButton_Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				577388AA273074D800677677 /* TaskDoneTableViewController.swift in Sources */,
 				576849D92774E7BF00B4CDAD /* InitialAnimationViewController.swift in Sources */,
 				578309E1272B68BB0037EB4A /* TaskAccessObject.swift in Sources */,
+				576849DE2775477800B4CDAD /* UIButton_Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

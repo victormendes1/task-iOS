@@ -21,14 +21,12 @@ class TaskDetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //titleField.becomeFirstResponder()
         if task == nil {
             task = Task(title: "", date: Date(), notes: "", isComplete: false, completedWhen: Date())
         } else {
-            configureShowTasDetail()
+            let _ = configureShowTasDetail()
         }
     }
-    
     
     func createNewTask() -> Task? {
         guard let item = task else { return nil }
@@ -43,17 +41,20 @@ class TaskDetailViewController: UITableViewController {
         return item
     }
     
-    func configureShowTasDetail() {
-        guard let _task = task else { return }
+    func configureShowTasDetail() -> Bool {
+        guard let _task = task else { return false }
         titleField.text = _task.title
         datePicker.date = _task.date
         notesView.text = _task.notes
+        return true
     }
     
     @IBAction func saveTask(_ sender: Any) {
-        if let item = createNewTask() { handler?(item) }
-            dismiss(animated: true, completion: nil)
-        }
+        if let item = createNewTask() {
+            handler?(item)
+            }
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         let isPresentingInAddMode = presentingViewController is UINavigationController

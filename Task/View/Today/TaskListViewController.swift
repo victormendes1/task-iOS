@@ -12,40 +12,30 @@ import Lottie
 
 class TaskListViewController: UITableViewController {
     @IBOutlet var showOptionsButton: UIBarButtonItem!
-   
+    
     var items: [Task] = []
     var disposed = DisposeBag()
+    let addNewTaskButton: UIButton = {
+        let button = UIButton().customButtonAddTask
+        return button
+    }()
     
-        
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.view.addSubview(addNewTaskButton)
         configureCell()
         showMenuOptions()
-        addNewTask()
-    }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowTaskDetailSegue",
-           let destination = segue.destination as? TaskDetailViewController,
-           let selectedCell = sender as? UITableViewCell,
-           let indexPath = tableView.indexPath(for: selectedCell) {
-            let rowIndex = indexPath.row
-            
-            // destination.configure(task: task)
-        } else if segue.identifier == "ShowNewTaskSegue" {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let detailVC: TaskDetailViewController = storyboard.instantiateViewController(identifier: "TaskDetailViewController")
-            detailVC.handler = { self.addTask($0) }
-            
-            let navigationController = UINavigationController(rootViewController: detailVC)
-            present(navigationController, animated: true, completion: nil)
-        } else if segue.identifier == "ShowReviewSegue" {
-        }
     }
     
     func addTask(_ item: Task) {
         items.append(item)
+        saveTasks()
+        tableView.reloadData()
+    }
+    
+    func updateTask(updated task: Task) {
+        let index = index(task)
+        items[index] = task
         saveTasks()
         tableView.reloadData()
     }
@@ -73,66 +63,6 @@ class TaskListViewController: UITableViewController {
         return index
     }
     
-    private func addNewTask() {
-        let add = UIButton(type: .custom)
-        let feedback = UIImpactFeedbackGenerator(style: .heavy)
-        let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
-        guard let largePlus = UIImage(systemName: "plus", withConfiguration: largeConfig) else { return }
-        add.frame = CGRect(x: 290, y: 720, width: 70, height: 70)
-        add.backgroundColor = .systemBlue
-        add.tintColor = .white
-        add.layer.cornerRadius = 0.5 * add.bounds.size.width
-        add.layer.shadowColor = UIColor.darkGray.cgColor
-        add.layer.shadowOffset = CGSize(width: 1, height: 2)
-        add.layer.masksToBounds = false
-        add.layer.shadowRadius = 4
-        add.layer.shadowOpacity = 0.8
-
-        add.setImage(largePlus, for: .normal)
-        navigationController?.view.addSubview(add)
-       
-        add.rx
-            .tap
-            .subscribe(onNext: {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let navigationDetail: UINavigationController = storyboard.instantiateViewController(identifier: "NavigationTaskDetail")
-                guard let vcAddNewTask = navigationDetail.viewControllers.first as? TaskDetailViewController else { return }
-                vcAddNewTask.handler = { self.addTask($0) }
-                self.showDetailViewController(navigationDetail, sender: nil)
-            })
-            .disposed(by: disposed)
-        
-        add.rx
-            .controlEvent(.touchDown)
-            .subscribe(onNext: {
-                feedback.impactOccurred()
-                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
-                    add.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                })
-            })
-            .disposed(by: disposed)
-        
-        add.rx
-            .controlEvent(.touchUpOutside)
-            .subscribe(onNext: {
-                feedback.impactOccurred()
-                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
-                    add.transform = CGAffineTransform.identity
-                })
-            })
-            .disposed(by: disposed)
-        
-        add.rx
-            .controlEvent(.touchUpInside)
-            .subscribe(onNext: {
-                feedback.impactOccurred()
-                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
-                    add.transform = CGAffineTransform.identity
-                })
-            })
-            .disposed(by: disposed)
-    }
-    
     private func showMenuOptions() {
         let reviewTaskDone = UIAction(title: "Review Tasks Done") { action in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -143,6 +73,51 @@ class TaskListViewController: UITableViewController {
         
         let options = UIMenu(title: "Options", options: .displayInline, children: [reviewTaskDone])
         showOptionsButton.menu = options
+    }
+    
+    //MARK: - Configure Bindings
+    private func configureBindings() {
+        let feedback = UIImpactFeedbackGenerator(style: .heavy)
+        addNewTaskButton.rx
+            .tap
+            .subscribe(onNext: {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let navigationDetail: UINavigationController = storyboard.instantiateViewController(identifier: "NavigationTaskDetail")
+                guard let vcAddNewTask = navigationDetail.viewControllers.first as? TaskDetailViewController else { return }
+                vcAddNewTask.handler = { self.addTask($0) }
+                self.showDetailViewController(navigationDetail, sender: nil)
+            })
+            .disposed(by: disposed)
+        
+        addNewTaskButton.rx
+            .controlEvent(.touchDown)
+            .subscribe(onNext: {
+                feedback.impactOccurred()
+                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+                    self.addNewTaskButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                })
+            })
+            .disposed(by: disposed)
+        
+        addNewTaskButton.rx
+            .controlEvent(.touchUpOutside)
+            .subscribe(onNext: {
+                feedback.impactOccurred()
+                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+                    self.addNewTaskButton.transform = CGAffineTransform.identity
+                })
+            })
+            .disposed(by: disposed)
+        
+        addNewTaskButton.rx
+            .controlEvent(.touchUpInside)
+            .subscribe(onNext: {
+                feedback.impactOccurred()
+                UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+                    self.addNewTaskButton.transform = CGAffineTransform.identity
+                })
+            })
+            .disposed(by: disposed)
     }
     
     //MARK: - TableView
@@ -165,6 +140,7 @@ class TaskListViewController: UITableViewController {
         let navigationController: UINavigationController = storyboard.instantiateViewController(identifier: "NavigationTaskDetail")
         guard let detailVC = navigationController.viewControllers.first as? TaskDetailViewController else { return }
         detailVC.task = items[indexPath.row]
+        detailVC.handler = { self.updateTask(updated: $0) }
         showDetailViewController(navigationController, sender: nil)
     }
 }
