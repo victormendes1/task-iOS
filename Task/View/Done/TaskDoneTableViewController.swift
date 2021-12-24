@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: - Protocol
 protocol SaveTaskDelegate {
     func saveCompletedTask(_ task: Task, _ tableView: UITableView)
 }
@@ -30,6 +31,7 @@ class TaskDoneTableViewController: UITableViewController {
         menuFilter()
     }
     
+    // MARK: - Privates Functions
     private func configureCell() {
         tableView.register(type: TaskDoneViewCell.self)
         if completeItems.isEmpty {
@@ -75,7 +77,7 @@ class TaskDoneTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    // MARK: - Table view data source
+    // MARK: - TableView
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         completeItems.count
     }
