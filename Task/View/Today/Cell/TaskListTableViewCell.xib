@@ -46,21 +46,11 @@
                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                 <state key="normal" backgroundImage="circle" catalog="system"/>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vql-uX-amt" customClass="AnimationView" customModule="Lottie">
-                                <rect key="frame" x="15" y="25" width="40" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="NPB-wd-bgY"/>
-                                    <constraint firstAttribute="height" constant="40" id="f2G-IK-Xim"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Md-WQ-x4W" firstAttribute="width" secondItem="6Md-WQ-x4W" secondAttribute="height" multiplier="1:1" id="0Dh-pf-MxZ"/>
                             <constraint firstItem="of9-rd-1Rw" firstAttribute="leading" secondItem="6Md-WQ-x4W" secondAttribute="trailing" constant="8" symbolic="YES" id="4U7-F3-p0b"/>
-                            <constraint firstItem="vql-uX-amt" firstAttribute="centerY" secondItem="of9-rd-1Rw" secondAttribute="centerY" id="ZD4-8j-pb7"/>
-                            <constraint firstItem="vql-uX-amt" firstAttribute="leading" secondItem="mPK-IW-Pib" secondAttribute="leading" constant="15" id="dHn-uD-Vmd"/>
                             <constraint firstItem="of9-rd-1Rw" firstAttribute="centerY" secondItem="mPK-IW-Pib" secondAttribute="centerY" id="dWJ-1K-paN"/>
                             <constraint firstItem="6Md-WQ-x4W" firstAttribute="centerY" secondItem="mPK-IW-Pib" secondAttribute="centerY" id="gDo-zo-aHa"/>
                             <constraint firstItem="6Md-WQ-x4W" firstAttribute="leading" secondItem="mPK-IW-Pib" secondAttribute="leading" constant="15" id="su0-sN-bjA"/>
@@ -79,7 +69,6 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="backgroundCellView" destination="mPK-IW-Pib" id="qjr-ZR-4G0"/>
-                <outlet property="checkAnimationView" destination="vql-uX-amt" id="RH3-J3-n7l"/>
                 <outlet property="dateLabel" destination="q0h-Nc-Eae" id="qan-MB-jrf"/>
                 <outlet property="doneButton" destination="6Md-WQ-x4W" id="WWZ-tN-CSt"/>
                 <outlet property="titleLabel" destination="Fsv-lq-H4H" id="evo-U5-8An"/>
@@ -87,16 +76,10 @@
             <point key="canvasLocation" x="8.6956521739130448" y="104.46428571428571"/>
         </tableViewCell>
     </objects>
-    <designables>
-        <designable name="vql-uX-amt"/>
-    </designables>
     <resources>
         <image name="circle" catalog="system" width="128" height="121"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

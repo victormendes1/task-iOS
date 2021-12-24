@@ -17,17 +17,19 @@ class TaskListTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
-    @IBOutlet var checkAnimationView: AnimationView!
     
     private var buttonAction: Action?
     private var bag = DisposeBag()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        checkAnimationView.isHidden = true
         backgroundCellView.layer.cornerRadius = 8
-        configureBindings(true)
+        configureBindings()
     }
+    
+    //    override func prepareForReuse() {
+    //        checkAnimationView.isHidden = true
+    //    }
     
     func configure(_ task: Task, handler: @escaping Action) {
         titleLabel.text = task.title
@@ -36,30 +38,33 @@ class TaskListTableViewCell: UITableViewCell {
         buttonAction = handler
     }
     
-    private func configureBindings(_ done: Bool) {
+    private func configureBindings() {
         doneButton.rx
             .tap
             .subscribe( onNext: { _ in
-                if let completion = self.buttonAction {
-                    completion()
-                    self.checkAnimation()
-                }
+                guard let handlingButtonClick = self.buttonAction else { return }
+                handlingButtonClick()
+                self.checkAnimation()
             })
             .disposed(by: bag)
     }
-    //; self.checkAnimation() 
-
+    
     private func checkAnimation() {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             self.doneButton.alpha = 0
         }, completion: { _ in
             self.doneButton.isHidden = true
         })
-        checkAnimationView = AnimationView(name: "checkmark")
+        let checkAnimationView = AnimationView(name: "checkmark")
         checkAnimationView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         checkAnimationView.contentMode = .scaleAspectFit
-        checkAnimationView.center = CGPoint(x: 54, y: 39) // TODO: Alterar o centro da animação
+        checkAnimationView.center = doneButton.center //CGPoint(x: 54, y: 39) // TODO: Alterar o centro da animação
         contentView.addSubview(checkAnimationView)
-        checkAnimationView.play()
+        checkAnimationView.play(completion: { finished in
+            if finished {
+                self.doneButton.isHidden = false
+                checkAnimationView.isHidden = true
+            }
+        })
     }
 }

@@ -23,6 +23,7 @@ class TaskListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.view.addSubview(addNewTaskButton)
+        configureBindings()
         configureCell()
         showMenuOptions()
     }
@@ -78,6 +79,7 @@ class TaskListViewController: UITableViewController {
     //MARK: - Configure Bindings
     private func configureBindings() {
         let feedback = UIImpactFeedbackGenerator(style: .heavy)
+        
         addNewTaskButton.rx
             .tap
             .subscribe(onNext: {
