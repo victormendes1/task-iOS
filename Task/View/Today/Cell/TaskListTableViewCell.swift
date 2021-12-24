@@ -51,18 +51,19 @@ class TaskListTableViewCell: UITableViewCell {
     
     private func checkAnimation() {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-            self.doneButton.alpha = 0
+           // self.doneButton.alpha = 0
         }, completion: { _ in
-            self.doneButton.isHidden = true
+          //  self.doneButton.isHidden = true
         })
-        let checkAnimationView = AnimationView(name: "checkmark")
-        checkAnimationView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        let checkAnimationView = AnimationView(name: "checkMark_Logo")//(name: "checkmark")
+        checkAnimationView.frame = CGRect(x: 30, y: 10, width: 50, height: 50)
         checkAnimationView.contentMode = .scaleAspectFit
-        checkAnimationView.center = doneButton.center //CGPoint(x: 54, y: 39) // TODO: Alterar o centro da animação
+        //checkAnimationView.center = doneButton.center //CGPoint(x: 54, y: 39) // TODO: Alterar o centro da animação
         contentView.addSubview(checkAnimationView)
         checkAnimationView.play(completion: { finished in
             if finished {
-                self.doneButton.isHidden = false
+                //self.doneButton.isHidden = false
+               // self.doneButton.alpha = 1
                 checkAnimationView.isHidden = true
             }
         })

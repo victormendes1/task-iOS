@@ -151,12 +151,12 @@ class TaskListViewController: UITableViewController {
 // Responsável de salvar as tarefas pronta
 extension TaskListViewController: SaveTaskDelegate {
     func saveCompletedTask(_ task: Task, _ tableView: UITableView) {
-        let _index = index(task)
-        task.isComplete.toggle()
-        task.completedWhen = Date()
-        TaskAccessObject.completeItems.append(task)
-        items.remove(at:_index)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            let _index = self.index(task)
+            task.isComplete = true
+            task.completedWhen = Date()
+            TaskAccessObject.completeItems.append(task)
+            self.items.remove(at:_index)
             tableView.deleteRows(at:[IndexPath(row: _index, section: 0)], with: .fade)
         })
     }
