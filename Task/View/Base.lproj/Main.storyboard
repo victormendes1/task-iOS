@@ -154,18 +154,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="1dv-Z2-4EC">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="455-0z-PBQ">
-                            <connections>
-                                <action selector="cancelButtonPressed:" destination="LjK-7e-Pam" id="ouv-N1-9ia"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9Jg-3u-sjP">
-                            <connections>
-                                <action selector="saveTask:" destination="LjK-7e-Pam" id="ULU-5G-Q0N"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="455-0z-PBQ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9Jg-3u-sjP"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="455-0z-PBQ" id="2Tl-IU-s8e"/>
                         <outlet property="datePicker" destination="NP3-gy-esV" id="SN0-yU-Phd"/>
                         <outlet property="notesView" destination="kxa-aM-byw" id="8hY-1g-qaf"/>
                         <outlet property="saveButton" destination="9Jg-3u-sjP" id="0zz-U0-X6K"/>
