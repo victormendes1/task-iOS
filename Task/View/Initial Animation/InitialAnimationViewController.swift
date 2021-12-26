@@ -22,7 +22,7 @@ class InitialAnimationViewController: UIViewController {
     }
     
     private func animation() {
-        logoView = AnimationView(name: "checkMark_Logo")
+        logoView = AnimationView(name: "checkMark_logo")
         logoView.contentMode = .scaleAspectFit
         view.addSubview(logoView)
         logoView.play(fromFrame: 58.0000023623884, toFrame: 1, loopMode: .autoReverse)
