@@ -21,7 +21,6 @@ class TaskDetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(task?.isComplete)
         if task == nil {
             task = Task(title: "", date: Date(), notes: "", isComplete: false, completedWhen: Date())
         } else {

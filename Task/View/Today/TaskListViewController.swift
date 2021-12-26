@@ -151,7 +151,7 @@ class TaskListViewController: UITableViewController {
 // Responsável de salvar as tarefas pronta
 extension TaskListViewController: SaveTaskDelegate {
     func saveCompletedTask(_ task: Task, _ tableView: UITableView) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
             let _index = self.index(task)
             task.isComplete = true
             task.completedWhen = Date()

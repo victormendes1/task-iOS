@@ -13,7 +13,6 @@ import Lottie
 class TaskListTableViewCell: UITableViewCell {
     typealias Action = () -> Void
     
-    @IBOutlet var backgroundCellView: UIView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
@@ -23,13 +22,9 @@ class TaskListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundCellView.layer.cornerRadius = 8
         configureBindings()
+        checkAnimation()
     }
-    
-    //    override func prepareForReuse() {
-    //        checkAnimationView.isHidden = true
-    //    }
     
     func configure(_ task: Task, handler: @escaping Action) {
         titleLabel.text = task.title
@@ -50,21 +45,21 @@ class TaskListTableViewCell: UITableViewCell {
     }
     
     private func checkAnimation() {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-           // self.doneButton.alpha = 0
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
+            self.doneButton.alpha = 0
         }, completion: { _ in
-          //  self.doneButton.isHidden = true
+            self.doneButton.isHidden = true
         })
-        let checkAnimationView = AnimationView(name: "checkMark_Logo")//(name: "checkmark")
-        checkAnimationView.frame = CGRect(x: 30, y: 10, width: 50, height: 50)
-        checkAnimationView.contentMode = .scaleAspectFit
-        //checkAnimationView.center = doneButton.center //CGPoint(x: 54, y: 39) // TODO: Alterar o centro da animação
+        let checkAnimationView = AnimationView(name: "checkMark_click")
+        let frame = doneButton.frame
+        checkAnimationView.frame = CGRect(x: 0, y: 0, width: frame.width + 28, height: frame.height + 28)
+        checkAnimationView.center = doneButton.center
         contentView.addSubview(checkAnimationView)
         checkAnimationView.play(completion: { finished in
             if finished {
-                //self.doneButton.isHidden = false
-               // self.doneButton.alpha = 1
-                checkAnimationView.isHidden = true
+                self.doneButton.isHidden = !finished
+                self.doneButton.alpha = 1
+                checkAnimationView.isHidden = finished
             }
         })
     }

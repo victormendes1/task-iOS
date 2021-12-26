@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5706590F272ABEC600850249 /* UITableView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706590E272ABEC600850249 /* UITableView_Extension.swift */; };
-		576849C627727AD200B4CDAD /* checkmark.json in Resources */ = {isa = PBXBuildFile; fileRef = 576849C527727AD200B4CDAD /* checkmark.json */; };
-		576849CC2774BAAC00B4CDAD /* checkMark_Logo.json in Resources */ = {isa = PBXBuildFile; fileRef = 576849CB2774BAAC00B4CDAD /* checkMark_Logo.json */; };
+		576849CC2774BAAC00B4CDAD /* checkMark_logo.json in Resources */ = {isa = PBXBuildFile; fileRef = 576849CB2774BAAC00B4CDAD /* checkMark_logo.json */; };
 		576849D92774E7BF00B4CDAD /* InitialAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576849D82774E7BF00B4CDAD /* InitialAnimationViewController.swift */; };
 		576849DE2775477800B4CDAD /* UIButton_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576849DD2775477700B4CDAD /* UIButton_Extension.swift */; };
+		576849E027760E6000B4CDAD /* checkMark_click.json in Resources */ = {isa = PBXBuildFile; fileRef = 576849DF27760E5C00B4CDAD /* checkMark_click.json */; };
 		577388AA273074D800677677 /* TaskDoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577388A9273074D800677677 /* TaskDoneTableViewController.swift */; };
 		577388AC2733508100677677 /* TaskDueDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577388AB2733508000677677 /* TaskDueDate.swift */; };
 		5776C5F7271F94A300837301 /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776C5F5271F94A300837301 /* TaskListTableViewCell.swift */; };
@@ -33,10 +33,10 @@
 
 /* Begin PBXFileReference section */
 		5706590E272ABEC600850249 /* UITableView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView_Extension.swift; sourceTree = "<group>"; };
-		576849C527727AD200B4CDAD /* checkmark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkmark.json; sourceTree = "<group>"; };
-		576849CB2774BAAC00B4CDAD /* checkMark_Logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkMark_Logo.json; sourceTree = "<group>"; };
+		576849CB2774BAAC00B4CDAD /* checkMark_logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkMark_logo.json; sourceTree = "<group>"; };
 		576849D82774E7BF00B4CDAD /* InitialAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialAnimationViewController.swift; sourceTree = "<group>"; };
 		576849DD2775477700B4CDAD /* UIButton_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton_Extension.swift; sourceTree = "<group>"; };
+		576849DF27760E5C00B4CDAD /* checkMark_click.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkMark_click.json; sourceTree = "<group>"; };
 		577388A9273074D800677677 /* TaskDoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDoneTableViewController.swift; sourceTree = "<group>"; };
 		577388AB2733508000677677 /* TaskDueDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDueDate.swift; sourceTree = "<group>"; };
 		5776C5F5271F94A300837301 /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
@@ -108,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				5795176F26AF2D4A0019280E /* Assets.xcassets */,
-				576849CB2774BAAC00B4CDAD /* checkMark_Logo.json */,
-				576849C527727AD200B4CDAD /* checkmark.json */,
+				576849DF27760E5C00B4CDAD /* checkMark_click.json */,
+				576849CB2774BAAC00B4CDAD /* checkMark_logo.json */,
 			);
 			path = "Assets ";
 			sourceTree = "<group>";
@@ -285,9 +285,9 @@
 			files = (
 				5795177326AF2D4A0019280E /* LaunchScreen.storyboard in Resources */,
 				5795177026AF2D4A0019280E /* Assets.xcassets in Resources */,
+				576849E027760E6000B4CDAD /* checkMark_click.json in Resources */,
 				57BAFDDC2754FA94001842F9 /* TaskDoneViewCell.xib in Resources */,
-				576849CC2774BAAC00B4CDAD /* checkMark_Logo.json in Resources */,
-				576849C627727AD200B4CDAD /* checkmark.json in Resources */,
+				576849CC2774BAAC00B4CDAD /* checkMark_logo.json in Resources */,
 				5776C5F8271F94A300837301 /* TaskListTableViewCell.xib in Resources */,
 				5795176E26AF2D420019280E /* Main.storyboard in Resources */,
 			);
