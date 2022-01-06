@@ -10,7 +10,7 @@ import UIKit
 extension UIButton {
     var customButtonAddTask: UIButton {
         let button = UIButton(type: .custom)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = #colorLiteral(red: 0.2203350663, green: 0.1061309651, blue: 0.3091109395, alpha: 1)
         button.frame = CGRect(x: 290, y: 720, width: 70, height: 70)
         button.tintColor = .white
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
